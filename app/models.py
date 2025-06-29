@@ -8,17 +8,17 @@ class DictEntry(BaseModel, abc.ABC):
     pos: Optional[str] = None
     definition: str
     examples: Optional[list[str]] = None
-    source: Optional[str]
+    source: Optional[str] = None
     
 class HeadWord(BaseModel, abc.ABC):
     headword: str
+    romanization: Optional[str]=None
     definitions: list[DictEntry]
-    romanization: str
-
-    @abc.abstractmethod
-    def __init__(self, x, y):
-        pass
     
     @abc.abstractmethod
+    def set_romanization(self):
+        pass
+
+class TamilHeadword(HeadWord):
     def set_romanization(self):
         pass
