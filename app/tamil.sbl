@@ -80,9 +80,11 @@ stringdef athai '{a}{tha}{pulli}{tha}(vs_ai)'
 stringdef thatha '{tha}{vs_aa}{tha}{pulli}{tha}{vs_aa}'
 stringdef thambi '{tha}{ma}{pulli}{pa}{vs_i}'
 stringdef thangai '{tha}{nga}{pulli}{ka}{vs_ai}'
+stringdef vaathu '{va}{vs_aa}{tha}{pulli}{tha}{vs_u}'
 
 
 routines (
+ remove_non_fin_ind_suff
  remove_plural_suffix
  remove_question_suffixes
  remove_question_prefixes
@@ -104,6 +106,16 @@ externals ( stem )
 booleans (
  found_a_match
  found_vetrumai_urupu
+)
+
+/* remove non-indicative finite suffixes: neg-pl-imp, permissive */
+define remove_non_fin_ind_suff as (
+ backwards (
+ [substring] among (
+  '{vs_aa}{tha}{vs_ii}{ra}{pulli}{ka}{lla}{pulli}' ( <- '{vs_u}' )
+  '{ka}{pulli}{ka}{vs_aa}{tha}{vs_ii}{ra}{pulli}{ka}{lla}{pulli}'  ( delete )
+ )
+ )
 )
 
 define has_min_length as (
@@ -431,7 +443,8 @@ define remove_tense_suffix as (
 )
 
 define stem as (
- test (not among ('{amma}' '{appa}' '{akka}' '{anna}' '{athai}' '{thatha}' '{thambi}' '{thangai}'))
+ test (not among ('{amma}' '{appa}' '{akka}' '{anna}' '{athai}' '{thatha}' '{thambi}' '{thangai}' '{vaathu}'))
+ do remove_non_fin_ind_suff
  unset found_vetrumai_urupu
  do fix_ending
  has_min_length
