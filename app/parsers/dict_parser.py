@@ -47,23 +47,14 @@ def mcalpin_to_json(input_file: str, output_file: str):
         json.dump(parsed, f, default=lambda o: o.__dict__, indent=4, ensure_ascii=False)
     print(f"✅ mcalpin dictionary output to: {output_file}")
 
-def get_word(word: str, dictionary="mcalpin"):
+def search_word(word: str, dictionary="mcalpin"):
     dict_path = f"app/data/dictionaries/{dictionary}.json"
-    # Load your JSON file
+    tamil_dict = None
+    result = None
     with open(dict_path, "r", encoding="utf-8") as f:
-        dictionary_list = json.load(f)
-
-    # Build a lookup dict: { headword: entry }
-    lookup = {entry["entry"]: entry for entry in dictionary_list}
-
-    def get_entry(word):
-        """O(1) search by headword."""
-        return lookup.get(word)
-
-    # ✅ Example usage:
-    result = get_entry("அக்கா")
-    if result:
-        print(json.dumps(result, ensure_ascii=False, indent=2))
-    else:
-        print("Not found")
+        tamil_dict= json.load(f)
+    
+    if word in tamil_dict:
+        result = tamil_dict[word]
+    return result
 

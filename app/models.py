@@ -9,7 +9,6 @@ class TamilForm(BaseModel): # any Tamil form/string has to have the form in Tami
     romanization: str | None = None # this will eventually call on the romanization function? maybe we won't even need to store it?
 
 class DictEntry(BaseModel, abc.ABC):
-    entry: str
     pos: str|None = None
     definitions: list[str]
     examples: Optional[list] = None # list of ids that reference an example containing the word (examples would be in their own table in a DB)
