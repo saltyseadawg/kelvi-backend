@@ -1,5 +1,5 @@
 from fastapi import Depends, FastAPI
-from .routers import words
+from app.routers import words
 
 app = FastAPI()
 
