@@ -3,7 +3,7 @@ from app.models import TamilDictEntry, TamilForm
 import re
 import json
 
-def parse_tamil_dictionary(text):
+def parse_mcalpin(text):
     lines = [line for line in text.strip().split("\n") if line.strip()]
     dictionary_list = []
     words_seen = set()
@@ -40,7 +40,7 @@ def mcalpin_to_json(input_file: str, output_file: str):
     schema_mapped = {}
     with open(input_file, "r") as raw_data:
         data = raw_data.read()
-        parsed = parse_tamil_dictionary(data)
+        parsed = parse_mcalpin(data)
 
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(parsed, f, default=lambda o: o.__dict__, indent=4, ensure_ascii=False)
