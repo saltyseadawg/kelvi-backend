@@ -5,35 +5,36 @@ import json
 
 def parse_mcalpin(text):
     lines = [line for line in text.strip().split("\n") if line.strip()]
-    dictionary_list = []
-    words_seen = set()
+    tamil_dict = {}
     current_headword = None
     # some headwords words have () [], which i assume indicates variation
     headword_pattern = re.compile(r'^[^a-zA-Z]*$')
     tamil_pattern = re.compile(r'[\u0B80-\u0BFF]+')
     definition_pattern = re.compile(r'[^\u0B80-\u0BFF\s]+[a-zA-Z()=\s\W]+$')
+    counter = 0
     for line in lines:
         try:
             if headword_pattern.match(line):
                 current_headword = line.strip()
-            if current_headword not in words_seen:
-                words_seen.add(current_headword)
+            if current_headword not in tamil_dict:
+                tamil_dict[current_headword] = None
                 continue
             related_forms = tamil_pattern.findall(line)[1:]
             tamil_forms = [TamilForm(tamil=form.strip()) for form in related_forms]
             
             definition = definition_pattern.search(line)[0].strip()
             entry = TamilDictEntry(
-                entry=current_headword,
                 definitions=[definition],
                 related_forms=tamil_forms,
             )
-            dictionary_list.append(entry)
+            tamil_dict[current_headword] = entry
         except Exception:
             print(current_headword)
-        finally:
-            continue
-    return dictionary_list
+            tamil_dict.pop(current_headword)
+            counter += 1
+
+    print(f"Failed to parse: {counter}")
+    return tamil_dict
 
 # remove the header line before running this cmd
 def mcalpin_to_json(input_file: str, output_file: str):
@@ -45,4 +46,24 @@ def mcalpin_to_json(input_file: str, output_file: str):
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(parsed, f, default=lambda o: o.__dict__, indent=4, ensure_ascii=False)
     print(f"✅ mcalpin dictionary output to: {output_file}")
+
+def get_word(word: str, dictionary="mcalpin"):
+    dict_path = f"app/data/dictionaries/{dictionary}.json"
+    # Load your JSON file
+    with open(dict_path, "r", encoding="utf-8") as f:
+        dictionary_list = json.load(f)
+
+    # Build a lookup dict: { headword: entry }
+    lookup = {entry["entry"]: entry for entry in dictionary_list}
+
+    def get_entry(word):
+        """O(1) search by headword."""
+        return lookup.get(word)
+
+    # ✅ Example usage:
+    result = get_entry("அக்கா")
+    if result:
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+    else:
+        print("Not found")
 
