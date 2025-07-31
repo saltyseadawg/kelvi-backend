@@ -1,5 +1,5 @@
 fastapi[standard]==0.115.12
-# Dev tools
-black==25.1.0
-flake8==7.2.0
 Pystemmer==3.0.0
+# Dev tools
+pre-commit==4.2.0
+ruff==0.12.6
