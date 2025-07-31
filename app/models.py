@@ -20,14 +20,11 @@ class TamilDictEntry(DictEntry):
     related_forms: Optional[list[TamilForm]] = None # often related to centamil_koDuntamil, or perhaps common conjugations of the stem
 
 
-class InputWord(BaseModel, abc.ABC):
+class InputWord(BaseModel):
     user_input: str
     romanization: Optional[str]=None
     root: TamilForm
     root_definition: DictEntry # stretch goal to segment compound words; for now want to just capture them unsegmented
-    prefixal_material: str =None # to get passed to gramble for parsing
-    suffixal_material: Optional[str]=None # to get passed to gramble for parsing
-    infixal_material: Optional[str]=None # not relevant for Tamil
-
-    
-
+    prefixal_material: str|None=None # to get passed to gramble for parsing
+    suffixal_material: str|None=None # to get passed to gramble for parsing
+    infixal_material: str|None=None # not relevant for Tamil
