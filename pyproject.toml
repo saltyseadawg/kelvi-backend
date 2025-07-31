@@ -1,0 +1,6 @@
+[project]
+name = "kelvi-backend"
+version = "0.0.1"
+dependencies = [
+    "pip>=25.1.1",
+]
