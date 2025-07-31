@@ -1,4 +1,4 @@
-from app.models import TamilDictEntry, TamilForm
+from app.models import TamilDictEntry, TamilForm, InputWord
 
 import re
 import json
@@ -55,6 +55,12 @@ def search_word(word: str, dictionary="mcalpin"):
         tamil_dict= json.load(f)
     
     if word in tamil_dict:
-        result = tamil_dict[word]
+        word_data = tamil_dict[word]
+        result = InputWord(
+            user_input=word,
+            root=TamilForm(tamil=word),
+            root_definition=TamilDictEntry(**word_data)
+        )
+
     return result
 
