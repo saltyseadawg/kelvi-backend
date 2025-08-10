@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from contextlib import asynccontextmanager
 
 from app.routers import words
-from app.data.dictionaries.worddict import WordDict
+from app.data.dictionaries.WordDict import WordDict
 
 
 tamil_dicts = {}
