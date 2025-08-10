@@ -1,5 +1,6 @@
 fastapi[standard]==0.115.12
 Pystemmer==3.0.0
+stanza==1.10.1
 # Dev tools
 pre-commit==4.2.0
 ruff==0.12.6
