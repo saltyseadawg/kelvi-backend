@@ -1,4 +1,4 @@
-from app.models import TamilDictEntry, TamilForm, InputWord
+from app.models import TamilDictEntry, TamilForm
 
 import re
 import json
@@ -47,21 +47,3 @@ def mcalpin_to_json(input_file: str, output_file: str):
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(parsed, f, default=lambda o: o.__dict__, indent=4, ensure_ascii=False)
     print(f"✅ mcalpin dictionary output to: {output_file}")
-
-
-def search_word(word: str, dictionary="mcalpin"):
-    dict_path = f"app/data/dictionaries/{dictionary}.json"
-    tamil_dict = None
-    result = None
-    with open(dict_path, "r", encoding="utf-8") as f:
-        tamil_dict = json.load(f)
-
-    if word in tamil_dict:
-        word_data = tamil_dict[word]
-        result = InputWord(
-            user_input=word,
-            root=TamilForm(tamil=word),
-            root_definition=TamilDictEntry(**word_data),
-        )
-
-    return result
