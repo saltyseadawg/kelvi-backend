@@ -1,4 +1,4 @@
-from app.models import TamilDictEntry, TamilForm, InputWord
+from app.models import TamilDictEntry, InputWord
 
 import json
 
@@ -13,14 +13,11 @@ class WordDict:
         with open(dict_path, "r", encoding="utf-8") as f:
             self.data = json.load(f)
 
-    def search_word(self, word: str):
-        result = None
-        if word in self.data:
-            word_data = self.data[word]
-            result = InputWord(
-                user_input=word,
-                root=TamilForm(tamil=word),
-                root_definition=TamilDictEntry(**word_data),
-            )
-
-        return result
+    def search_word(self, user_input: InputWord) -> bool:
+        root = user_input.root.tamil
+        isFound = False
+        if root in self.data:
+            word_data = self.data[root]
+            user_input.root_definition.append(TamilDictEntry(**word_data))
+            isFound = True
+        return isFound
