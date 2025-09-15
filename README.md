@@ -14,23 +14,15 @@ Prerequisites: Install [`uv`](https://docs.astral.sh/uv/getting-started/installa
     uv venv .venv
     source .venv/bin/activate
     ```
-2. Install pip
+2. Sync uv 
     ```
-    uv add pip
+    uv sync
     ```
-3. Install requirements
-    ```
-    uv pip install -r requirements/requirements.txt
-    ```
-4. Install current package in developer mode
-    ```
-    uv pip install -e .
-    ```
-5. Run pre-commit hooks
+3. Run pre-commit hooks
     ```
     pre-commit run --all
     ```
-6. Start the FastAPI server
+4. Start the FastAPI server
     ```
-    uv run fastapi run  app/main.py
+    uv run fastapi run app/main.py
     ```

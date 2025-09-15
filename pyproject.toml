@@ -2,5 +2,18 @@
 name = "kelvi-backend"
 version = "0.0.1"
 dependencies = [
+    "fastapi==0.115.12",
     "pip>=25.1.1",
+    "pystemmer==3.0.0",
+    "stanza>=1.10.1",
 ]
+
+[dependency-groups]
+dev = [
+    "kelvi-backend",
+    "pre-commit==4.2.0",
+    "ruff==0.12.6",
+]
+
+[tool.uv.sources]
+kelvi-backend = { workspace = true }
