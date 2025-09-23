@@ -1,8 +1,9 @@
 def get_prefix(word: str, stem: str) -> str:
     prefix = word.split(stem)[0]
-    if prefix in (word, ''):
+    if prefix in (word, ""):
         prefix = None
     return prefix
+
 
 def get_suffix(word: str, stem: str) -> str:
     suffix = word.split(stem)
@@ -11,6 +12,6 @@ def get_suffix(word: str, stem: str) -> str:
     else:
         suffix = suffix[1]
 
-    if suffix in (word, ''):
+    if suffix in (word, ""):
         suffix = None
     return suffix

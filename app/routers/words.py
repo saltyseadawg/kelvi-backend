@@ -1,5 +1,4 @@
 from fastapi import APIRouter, HTTPException, Request
-from app.models import InputWord, TamilForm
 from app.morphology import analyzer
 
 router = APIRouter()

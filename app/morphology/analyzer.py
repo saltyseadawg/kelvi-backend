@@ -3,6 +3,7 @@ import stanza
 from app.models import InputWord, TamilForm
 from app.morphology import lemmatizer, stemmer, affixes
 
+
 def analyze_word(word: str, pipeline=None):
     """
     Saapitten
@@ -23,7 +24,7 @@ def analyze_word(word: str, pipeline=None):
             processors="tokenize,mwt,pos,lemma",
             download_method="reuse_resources",
         )
-    
+
     stanza_result = lemmatizer.process_word(pipeline, word)
     lemma = stanza_result.lemma
     stem = lemma
@@ -37,10 +38,5 @@ def analyze_word(word: str, pipeline=None):
         user_input=word,
         root=TamilForm(tamil=lemma),
         prefixal_material=prefix,
-        suffixal_material=suffix
+        suffixal_material=suffix,
     )
-
-
-    
-
-
