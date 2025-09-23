@@ -1,15 +1,13 @@
 from fastapi import APIRouter, HTTPException, Request
 from app.models import InputWord, TamilForm
-from app.utils.pipeline import get_first_word_from_pipeline
+from app.morphology import analyzer
 
 router = APIRouter()
 
 
 @router.get("/word/{query}")
 async def read_word(query: str, request: Request):
-    doc = request.app.state.nlp(query)
-    word = get_first_word_from_pipeline(doc)
-    result = InputWord(user_input=query, root=TamilForm(tamil=word.lemma))
+    result = analyzer.analyze_word(query, pipeline=request.app.state.stanza_pipeline)
     tamil_dicts = request.app.state.tamil_dicts
     for d in tamil_dicts.values():
         d.search_word(result)
