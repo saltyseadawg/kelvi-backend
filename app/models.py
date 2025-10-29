@@ -37,6 +37,6 @@ class InputWord(BaseModel):
     root_definition: list[
         DictEntry
     ] = []  # stretch goal to segment compound words; for now want to just capture them unsegmented
-    prefixal_material: str | None = None  # to get passed to gramble for parsing
-    suffixal_material: str | None = None  # to get passed to gramble for parsing
-    infixal_material: str | None = None  # not relevant for Tamil
+    prefixal_material: dict | None = None  # to get passed to gramble for parsing
+    suffixal_material: dict | None = None  # to get passed to gramble for parsing
+    infixal_material: dict | None = None  # not relevant for Tamil

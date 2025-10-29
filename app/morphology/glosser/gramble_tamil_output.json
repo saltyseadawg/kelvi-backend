@@ -1,0 +1,814 @@
+[
+  {
+    "text": "ாத",
+    "gloss": "[thingthatwasn't/isn't/won'tbe]"
+  },
+  {
+    "text": "ும்",
+    "gloss": "[thingthatwillbe]"
+  },
+  {
+    "text": "கிற",
+    "gloss": "[thingthatis]"
+  },
+  {
+    "text": "க்கிற",
+    "gloss": "[thingthatis]"
+  },
+  {
+    "text": "ிய",
+    "gloss": "[thingthatwas]"
+  },
+  {
+    "text": "ச்ச",
+    "gloss": "[thingthatwas]"
+  },
+  {
+    "text": "த்த",
+    "gloss": "[thingthatwas]"
+  },
+  {
+    "text": "ட",
+    "gloss": "[thingthatwas]"
+  },
+  {
+    "text": "ட்ட",
+    "gloss": "[thingthatwas]"
+  },
+  {
+    "text": "ன",
+    "gloss": "[thingthatwas]"
+  },
+  {
+    "text": "ின",
+    "gloss": "[thingthatwas]"
+  },
+  {
+    "text": "யய",
+    "gloss": "[thingthatwas]"
+  },
+  {
+    "text": "ந்த",
+    "gloss": "[thingthatwas]"
+  },
+  {
+    "text": "த",
+    "gloss": "[thingthatwas]"
+  },
+  {
+    "text": "ாவிட்டால்",
+    "gloss": "[ifnot]"
+  },
+  {
+    "text": "ச்சால்",
+    "gloss": "[if]"
+  },
+  {
+    "text": "த்தால்",
+    "gloss": "[if]"
+  },
+  {
+    "text": "டால்",
+    "gloss": "[if]"
+  },
+  {
+    "text": "ட்டால்",
+    "gloss": "[if]"
+  },
+  {
+    "text": "னால்",
+    "gloss": "[if]"
+  },
+  {
+    "text": "ினால்",
+    "gloss": "[if]"
+  },
+  {
+    "text": "யால்",
+    "gloss": "[if]"
+  },
+  {
+    "text": "ந்தால்",
+    "gloss": "[if]"
+  },
+  {
+    "text": "தால்",
+    "gloss": "[if]"
+  },
+  {
+    "text": "ாது",
+    "gloss": "[doesn't/didn'thappen]"
+  },
+  {
+    "text": "ாமல்",
+    "gloss": "[doesn't/didn'thappen]"
+  },
+  {
+    "text": "ச்சு",
+    "gloss": "[happened]"
+  },
+  {
+    "text": "த்து",
+    "gloss": "[happened]"
+  },
+  {
+    "text": "டு",
+    "gloss": "[happened]"
+  },
+  {
+    "text": "ட்டு",
+    "gloss": "[happened]"
+  },
+  {
+    "text": "ி",
+    "gloss": "[happened]"
+  },
+  {
+    "text": "ய்",
+    "gloss": "[happened]"
+  },
+  {
+    "text": "ந்து",
+    "gloss": "[happened]"
+  },
+  {
+    "text": "து",
+    "gloss": "[happened]"
+  },
+  {
+    "text": "க்க",
+    "gloss": "[todoaction]"
+  },
+  {
+    "text": "க",
+    "gloss": "[todoaction]"
+  },
+  {
+    "text": "்)",
+    "gloss": "[todoaction]"
+  },
+  {
+    "text": "ௌ",
+    "gloss": "[todoaction]"
+  },
+  {
+    "text": "ோ",
+    "gloss": "[todoaction]"
+  },
+  {
+    "text": "ொ",
+    "gloss": "[todoaction]"
+  },
+  {
+    "text": "ை",
+    "gloss": "[todoaction]"
+  },
+  {
+    "text": "ே",
+    "gloss": "[todoaction]"
+  },
+  {
+    "text": "ெ",
+    "gloss": "[todoaction]"
+  },
+  {
+    "text": "ூ",
+    "gloss": "[todoaction]"
+  },
+  {
+    "text": "ு",
+    "gloss": "[todoaction]"
+  },
+  {
+    "text": "ீ",
+    "gloss": "[todoaction]"
+  },
+  {
+    "text": "ி",
+    "gloss": "[todoaction]"
+  },
+  {
+    "text": "~(ா",
+    "gloss": "[todoaction]"
+  },
+  {
+    "text": "க்கும்",
+    "gloss": "[fut][3pln]"
+  },
+  {
+    "text": "ும்",
+    "gloss": "[fut][3pln]"
+  },
+  {
+    "text": "ிற்று",
+    "gloss": "[past][3sn]"
+  },
+  {
+    "text": "ப்பது",
+    "gloss": "itwill"
+  },
+  {
+    "text": "பது",
+    "gloss": "itwill"
+  },
+  {
+    "text": "வது",
+    "gloss": "itwill"
+  },
+  {
+    "text": "ப்போம்",
+    "gloss": "wewill"
+  },
+  {
+    "text": "போம்",
+    "gloss": "wewill"
+  },
+  {
+    "text": "வோம்",
+    "gloss": "wewill"
+  },
+  {
+    "text": "ப்பன",
+    "gloss": "theywill"
+  },
+  {
+    "text": "ப்பார்கள்",
+    "gloss": "theywill"
+  },
+  {
+    "text": "ப்பாங்கள்",
+    "gloss": "theywill"
+  },
+  {
+    "text": "பன",
+    "gloss": "theywill"
+  },
+  {
+    "text": "பார்கள்",
+    "gloss": "theywill"
+  },
+  {
+    "text": "பாங்கள்",
+    "gloss": "theywill"
+  },
+  {
+    "text": "வன",
+    "gloss": "theywill"
+  },
+  {
+    "text": "வார்கள்",
+    "gloss": "theywill"
+  },
+  {
+    "text": "வாங்கள்",
+    "gloss": "theywill"
+  },
+  {
+    "text": "ப்பார்",
+    "gloss": "they(genderneutral/respectful)will"
+  },
+  {
+    "text": "பார்",
+    "gloss": "they(genderneutral/respectful)will"
+  },
+  {
+    "text": "வார்",
+    "gloss": "they(genderneutral/respectful)will"
+  },
+  {
+    "text": "ப்பாள்",
+    "gloss": "shewill"
+  },
+  {
+    "text": "பாள்",
+    "gloss": "shewill"
+  },
+  {
+    "text": "வாள்",
+    "gloss": "shewill"
+  },
+  {
+    "text": "ப்பான்",
+    "gloss": "hewill"
+  },
+  {
+    "text": "பான்",
+    "gloss": "hewill"
+  },
+  {
+    "text": "வான்",
+    "gloss": "hewill"
+  },
+  {
+    "text": "ப்பாய்",
+    "gloss": "youwill"
+  },
+  {
+    "text": "பாய்",
+    "gloss": "youwill"
+  },
+  {
+    "text": "வாய்",
+    "gloss": "youwill"
+  },
+  {
+    "text": "ப்பேன்",
+    "gloss": "Iwill"
+  },
+  {
+    "text": "பேன்",
+    "gloss": "Iwill"
+  },
+  {
+    "text": "வேன்",
+    "gloss": "Iwill"
+  },
+  {
+    "text": "ச்சது",
+    "gloss": "itdid"
+  },
+  {
+    "text": "த்தது",
+    "gloss": "itdid"
+  },
+  {
+    "text": "டது",
+    "gloss": "itdid"
+  },
+  {
+    "text": "ட்டது",
+    "gloss": "itdid"
+  },
+  {
+    "text": "னது",
+    "gloss": "itdid"
+  },
+  {
+    "text": "ினது",
+    "gloss": "itdid"
+  },
+  {
+    "text": "யயது",
+    "gloss": "itdid"
+  },
+  {
+    "text": "ந்தது",
+    "gloss": "itdid"
+  },
+  {
+    "text": "தது",
+    "gloss": "itdid"
+  },
+  {
+    "text": "ச்சோம்",
+    "gloss": "wedid"
+  },
+  {
+    "text": "த்தோம்",
+    "gloss": "wedid"
+  },
+  {
+    "text": "டோம்",
+    "gloss": "wedid"
+  },
+  {
+    "text": "ட்டோம்",
+    "gloss": "wedid"
+  },
+  {
+    "text": "னோம்",
+    "gloss": "wedid"
+  },
+  {
+    "text": "ினோம்",
+    "gloss": "wedid"
+  },
+  {
+    "text": "யயோம்",
+    "gloss": "wedid"
+  },
+  {
+    "text": "ந்தோம்",
+    "gloss": "wedid"
+  },
+  {
+    "text": "தோம்",
+    "gloss": "wedid"
+  },
+  {
+    "text": "ச்சன",
+    "gloss": "theydid"
+  },
+  {
+    "text": "ச்சார்கள்",
+    "gloss": "theydid"
+  },
+  {
+    "text": "ச்சாங்கள்",
+    "gloss": "theydid"
+  },
+  {
+    "text": "த்தன",
+    "gloss": "theydid"
+  },
+  {
+    "text": "த்தார்கள்",
+    "gloss": "theydid"
+  },
+  {
+    "text": "த்தாங்கள்",
+    "gloss": "theydid"
+  },
+  {
+    "text": "டன",
+    "gloss": "theydid"
+  },
+  {
+    "text": "டார்கள்",
+    "gloss": "theydid"
+  },
+  {
+    "text": "டாங்கள்",
+    "gloss": "theydid"
+  },
+  {
+    "text": "ட்டன",
+    "gloss": "theydid"
+  },
+  {
+    "text": "ட்டார்கள்",
+    "gloss": "theydid"
+  },
+  {
+    "text": "ட்டாங்கள்",
+    "gloss": "theydid"
+  },
+  {
+    "text": "னன",
+    "gloss": "theydid"
+  },
+  {
+    "text": "னார்கள்",
+    "gloss": "theydid"
+  },
+  {
+    "text": "னாங்கள்",
+    "gloss": "theydid"
+  },
+  {
+    "text": "ினன",
+    "gloss": "theydid"
+  },
+  {
+    "text": "ினார்கள்",
+    "gloss": "theydid"
+  },
+  {
+    "text": "ினாங்கள்",
+    "gloss": "theydid"
+  },
+  {
+    "text": "யயன",
+    "gloss": "theydid"
+  },
+  {
+    "text": "யயார்கள்",
+    "gloss": "theydid"
+  },
+  {
+    "text": "யயாங்கள்",
+    "gloss": "theydid"
+  },
+  {
+    "text": "ந்தன",
+    "gloss": "theydid"
+  },
+  {
+    "text": "ந்தார்கள்",
+    "gloss": "theydid"
+  },
+  {
+    "text": "ந்தாங்கள்",
+    "gloss": "theydid"
+  },
+  {
+    "text": "தன",
+    "gloss": "theydid"
+  },
+  {
+    "text": "தார்கள்",
+    "gloss": "theydid"
+  },
+  {
+    "text": "தாங்கள்",
+    "gloss": "theydid"
+  },
+  {
+    "text": "ச்சார்",
+    "gloss": "they(genderneutral/respectful)did"
+  },
+  {
+    "text": "த்தார்",
+    "gloss": "they(genderneutral/respectful)did"
+  },
+  {
+    "text": "டார்",
+    "gloss": "they(genderneutral/respectful)did"
+  },
+  {
+    "text": "ட்டார்",
+    "gloss": "they(genderneutral/respectful)did"
+  },
+  {
+    "text": "னார்",
+    "gloss": "they(genderneutral/respectful)did"
+  },
+  {
+    "text": "ினார்",
+    "gloss": "they(genderneutral/respectful)did"
+  },
+  {
+    "text": "யயார்",
+    "gloss": "they(genderneutral/respectful)did"
+  },
+  {
+    "text": "ந்தார்",
+    "gloss": "they(genderneutral/respectful)did"
+  },
+  {
+    "text": "தார்",
+    "gloss": "they(genderneutral/respectful)did"
+  },
+  {
+    "text": "ச்சாள்",
+    "gloss": "shedid"
+  },
+  {
+    "text": "த்தாள்",
+    "gloss": "shedid"
+  },
+  {
+    "text": "டாள்",
+    "gloss": "shedid"
+  },
+  {
+    "text": "ட்டாள்",
+    "gloss": "shedid"
+  },
+  {
+    "text": "னாள்",
+    "gloss": "shedid"
+  },
+  {
+    "text": "ினாள்",
+    "gloss": "shedid"
+  },
+  {
+    "text": "யயாள்",
+    "gloss": "shedid"
+  },
+  {
+    "text": "ந்தாள்",
+    "gloss": "shedid"
+  },
+  {
+    "text": "தாள்",
+    "gloss": "shedid"
+  },
+  {
+    "text": "ச்சான்",
+    "gloss": "hedid"
+  },
+  {
+    "text": "த்தான்",
+    "gloss": "hedid"
+  },
+  {
+    "text": "டான்",
+    "gloss": "hedid"
+  },
+  {
+    "text": "ட்டான்",
+    "gloss": "hedid"
+  },
+  {
+    "text": "னான்",
+    "gloss": "hedid"
+  },
+  {
+    "text": "ினான்",
+    "gloss": "hedid"
+  },
+  {
+    "text": "யயான்",
+    "gloss": "hedid"
+  },
+  {
+    "text": "ந்தான்",
+    "gloss": "hedid"
+  },
+  {
+    "text": "தான்",
+    "gloss": "hedid"
+  },
+  {
+    "text": "ச்சாய்",
+    "gloss": "youdid"
+  },
+  {
+    "text": "த்தாய்",
+    "gloss": "youdid"
+  },
+  {
+    "text": "டாய்",
+    "gloss": "youdid"
+  },
+  {
+    "text": "ட்டாய்",
+    "gloss": "youdid"
+  },
+  {
+    "text": "னாய்",
+    "gloss": "youdid"
+  },
+  {
+    "text": "ினாய்",
+    "gloss": "youdid"
+  },
+  {
+    "text": "யயாய்",
+    "gloss": "youdid"
+  },
+  {
+    "text": "ந்தாய்",
+    "gloss": "youdid"
+  },
+  {
+    "text": "தாய்",
+    "gloss": "youdid"
+  },
+  {
+    "text": "ச்சேன்",
+    "gloss": "Idid"
+  },
+  {
+    "text": "த்தேன்",
+    "gloss": "Idid"
+  },
+  {
+    "text": "டேன்",
+    "gloss": "Idid"
+  },
+  {
+    "text": "ட்டேன்",
+    "gloss": "Idid"
+  },
+  {
+    "text": "னேன்",
+    "gloss": "Idid"
+  },
+  {
+    "text": "ினேன்",
+    "gloss": "Idid"
+  },
+  {
+    "text": "யயேன்",
+    "gloss": "Idid"
+  },
+  {
+    "text": "ந்தேன்",
+    "gloss": "Idid"
+  },
+  {
+    "text": "தேன்",
+    "gloss": "Idid"
+  },
+  {
+    "text": "கிறது",
+    "gloss": "it(do)"
+  },
+  {
+    "text": "க்கிறது",
+    "gloss": "it(do)"
+  },
+  {
+    "text": "கிறோம்",
+    "gloss": "we(do)"
+  },
+  {
+    "text": "க்கிறோம்",
+    "gloss": "we(do)"
+  },
+  {
+    "text": "கிறன",
+    "gloss": "they(do)"
+  },
+  {
+    "text": "கிறார்கள்",
+    "gloss": "they(do)"
+  },
+  {
+    "text": "கிறாங்கள்",
+    "gloss": "they(do)"
+  },
+  {
+    "text": "க்கிறன",
+    "gloss": "they(do)"
+  },
+  {
+    "text": "க்கிறார்கள்",
+    "gloss": "they(do)"
+  },
+  {
+    "text": "க்கிறாங்கள்",
+    "gloss": "they(do)"
+  },
+  {
+    "text": "கிறார்",
+    "gloss": "they(genderneutral/respectful)(do)"
+  },
+  {
+    "text": "க்கிறார்",
+    "gloss": "they(genderneutral/respectful)(do)"
+  },
+  {
+    "text": "கிறாள்",
+    "gloss": "she(do)"
+  },
+  {
+    "text": "க்கிறாள்",
+    "gloss": "she(do)"
+  },
+  {
+    "text": "கிறான்",
+    "gloss": "he(do)"
+  },
+  {
+    "text": "க்கிறான்",
+    "gloss": "he(do)"
+  },
+  {
+    "text": "கிறாய்",
+    "gloss": "you(do)"
+  },
+  {
+    "text": "க்கிறாய்",
+    "gloss": "you(do)"
+  },
+  {
+    "text": "கிறேன்",
+    "gloss": "I(do)"
+  },
+  {
+    "text": "க்கிறேன்",
+    "gloss": "I(do)"
+  },
+  {
+    "text": "ாதீர்களேன்",
+    "gloss": "[don'tdoit,please(y'all/respectfully)]"
+  },
+  {
+    "text": "ுங்களேன்",
+    "gloss": "[whydon'tyoudoit,(y'all/respectfully)]"
+  },
+  {
+    "text": "ாதேயேன்",
+    "gloss": "[don'tdoit,please]"
+  },
+  {
+    "text": "யேன்",
+    "gloss": "[whydon'tyoudoit]"
+  },
+  {
+    "text": "ேன்",
+    "gloss": "[whydon'tyoudoit]"
+  },
+  {
+    "text": "ாதீர்கள்",
+    "gloss": "[don't(y'all)doit/don'tdoit(respectfully)]"
+  },
+  {
+    "text": "ுங்கள்",
+    "gloss": "[doit,y'all/doit(respectfully)]"
+  },
+  {
+    "text": "ாதே",
+    "gloss": "[don'tdoit]"
+  },
+  {
+    "text": "க்க",
+    "gloss": "[letitbeso]"
+  },
+  {
+    "text": "க",
+    "gloss": "[letitbeso]"
+  },
+  {
+    "text": "லாம்",
+    "gloss": "[letusdoit]"
+  },
+  {
+    "text": "ட்டும்",
+    "gloss": "[letthem/her/him/itdoit]"
+  }
+]

@@ -4,6 +4,7 @@ import stanza
 
 from app.routers import words
 from app.data.dictionaries.WordDict import WordDict
+from app.morphology.glosser.Glosser import Glosser
 
 
 tamil_dicts = {}
@@ -24,6 +25,7 @@ async def lifespan(app: FastAPI):
         download_method="reuse_resources",
     )
     app.state.stanza_pipeline = stanza_pipeline
+    app.state.glosser = Glosser()
 
     yield
     tamil_dicts.clear()
