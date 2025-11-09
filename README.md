@@ -5,6 +5,7 @@ The backend for Kelvi, a "smart" Tamil dictionary.
 
 ## Dictionaries used
 - [mcalpin](https://github.com/indic-dict/stardict-tamil)
+- [wiktionary](https://www.wiktionary.org/) data obtained via [kaikki.org](https://kaikki.org/index.html)
 
 ## Setup
 Prerequisites: Install [`uv`](https://docs.astral.sh/uv/getting-started/installation/)
