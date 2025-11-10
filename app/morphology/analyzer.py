@@ -1,11 +1,11 @@
 from app.models import InputWord, TamilForm
-from app.morphology import lemmatizer, stemmer, affixes
+from app.morphology import stanza_utils
 from app.morphology.glosser.Glosser import Glosser
 
 import stanza
 
 
-def analyze_word(word: str, pipeline=None, glosser=None):
+def analyze_word_stanza(word: str, pipeline=None, glosser=None):
     """
     Saapitten
     Lemma: sappidu
@@ -29,7 +29,7 @@ def analyze_word(word: str, pipeline=None, glosser=None):
     if glosser is None:
         glosser = Glosser()
 
-    stanza_result = lemmatizer.process_word(pipeline, word)
+    stanza_result = stanza_utils.process_word(pipeline, word)
     lemma = stanza_result.lemma
 
     gloss_result = glosser.gloss_suffix(word, lemma)
@@ -38,14 +38,21 @@ def analyze_word(word: str, pipeline=None, glosser=None):
     if gloss_result is not None:
         suffix = gloss_result[0]
         suffix_gloss = gloss_result[1]
-    
-    
-    # if lemma != word:
-    #     stem = stemmer.stem_word(word)
-    # prefix = affixes.get_prefix(word, stem)
-    # suffix = affixes.get_suffix(word, stem)
     return InputWord(
         user_input=word,
         root=TamilForm(tamil=lemma),
-        suffixal_material={'text':suffix, 'gloss': suffix_gloss}
+        suffixal_material={"text": suffix, "gloss": suffix_gloss},
+    )
+
+
+def analyze_word_gramble(word: str, glosser=None):
+    morphemes = glosser.find_morphemes(word)
+    lemma = morphemes["lemma"]
+    suffix = morphemes["suffix"]
+    gloss = glosser.get_gloss(suffix)
+
+    return InputWord(
+        user_input=word,
+        root=TamilForm(tamil=lemma),
+        suffixal_material={"text": suffix, "gloss": gloss},
     )

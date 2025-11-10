@@ -1,5 +1,5 @@
 from app.morphology import analyzer
-
+from app.morphology.glosser.Glosser import Glosser
 from app.models import InputWord, TamilForm
 
 import pytest
@@ -15,11 +15,30 @@ def stanza_pipeline():
     )
 
 
-def test_analyze_word(stanza_pipeline):
+@pytest.fixture
+def glosser_obj():
+    return Glosser()
+
+
+def test_analyze_word_stanza(stanza_pipeline):
     word = "இருந்தேன்"
-    result = analyzer.analyze_word(word, stanza_pipeline)
+    result = analyzer.analyze_word_stanza(word, stanza_pipeline)
 
     expected = InputWord(
-        user_input=word, root=TamilForm(tamil="இரு"), suffixal_material="ந்தேன்"
+        user_input=word,
+        root=TamilForm(tamil="இரு"),
+        suffixal_material={"text": "ந்தேன்", "gloss": "Idid"},
+    )
+    assert expected == result
+
+
+def test_analyze_word_gramble(glosser_obj):
+    word = "மெய்ந்தன"
+    result = analyzer.analyze_word_gramble(word, glosser_obj)
+
+    expected = InputWord(
+        user_input=word,
+        root=TamilForm(tamil="மெய்"),
+        suffixal_material={"text": "ந்தன", "gloss": "theydid"},
     )
     assert expected == result
