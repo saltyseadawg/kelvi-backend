@@ -1,6 +1,3 @@
-""" """
-
-
 def process_word(pipeline, word: str):
     """
     The lemmatization is handled by the Stanford NLP pipeline and
