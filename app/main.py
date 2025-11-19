@@ -22,7 +22,9 @@ async def lifespan(app: FastAPI):
     stanza_pipeline = stanza.Pipeline(
         lang="ta",
         processors="tokenize,mwt,pos,lemma",
-        download_method="reuse_resources",
+        # uncomment for local development
+        # download_method="reuse_resources" 
+        download_method=None,
     )
     app.state.stanza_pipeline = stanza_pipeline
     app.state.glosser = Glosser()

@@ -17,8 +17,3 @@ async def read_word(query: str, request: Request):
     if not isFound:
         raise HTTPException(status_code=404, detail="Word not found")
     return result
-
-
-@router.get("/lemmatize/{query}")
-async def lemmatize_word(query: str, request: Request):
-    pass
