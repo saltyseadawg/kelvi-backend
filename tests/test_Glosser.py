@@ -8,6 +8,6 @@ class TestGlosser(unittest.TestCase):
 
     def test_gloss_suffix(self):
         word = "பண்ணாதே"
-        expected = ("ாதே", "[don'tdoit]")
+        expected = ("ாதே", "don't do it")
         gloss = self.glosser.gloss_suffix(word)
         assert gloss == expected
