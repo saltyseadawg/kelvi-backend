@@ -16,4 +16,4 @@ async def read_word(query: str, request: Request):
         isFound = any(d.search_word(result) for d in tamil_dicts.values())
     if not isFound:
         raise HTTPException(status_code=404, detail="Word not found")
-    return result
+    return None

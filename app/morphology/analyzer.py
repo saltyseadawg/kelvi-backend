@@ -47,12 +47,22 @@ def analyze_word_stanza(word: str, pipeline=None, glosser=None):
 
 def analyze_word_gramble(word: str, glosser=None):
     morphemes = glosser.find_morphemes(word)
-    lemma = morphemes["lemma"]
-    suffix = morphemes["suffix"]
-    gloss = glosser.get_gloss(suffix)
+    lemma = word
+    suffix = None
+    gloss = None
+    suffixal_material = None
 
+    if morphemes:
+        lemma = morphemes["lemma"]
+        suffix = morphemes["suffix"]
+        gloss = glosser.get_gloss(suffix)
+        suffixal_material = {
+            'text': suffix,
+            'gloss': gloss
+        }
+        
     return InputWord(
         user_input=word,
         root=TamilForm(tamil=lemma),
-        suffixal_material={"text": suffix, "gloss": gloss},
+        suffixal_material=suffixal_material
     )
