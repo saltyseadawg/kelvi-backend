@@ -1,6 +1,7 @@
 from app.models import TamilDictEntry, InputWord
 
 import json
+import logging
 
 
 class WordDict:
@@ -16,8 +17,11 @@ class WordDict:
     def search_word(self, user_input: InputWord) -> bool:
         root = user_input.root.tamil
         isFound = False
-        if root in self.data:
-            word_data = self.data[root]
-            user_input.root_definition.append(TamilDictEntry(**word_data))
-            isFound = True
+        try:
+            if root in self.data:
+                word_data = self.data[root]
+                user_input.root_definition.append(TamilDictEntry(**word_data))
+                isFound = True
+        except TypeError:
+            logging.warning(f"Input {user_input} with root {root} dict entry is incomplete.")
         return isFound
