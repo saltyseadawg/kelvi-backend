@@ -44,8 +44,10 @@ class TestRomanizer(unittest.TestCase):
         assert romanized == expected
 
         word = "உங்களுடைய"
-        expected = "unkaḷuṭaiya"
+        expected = "ungkaḷuṭaiya"
         romanized = self.romanizer.romanize(word)
+
+        assert romanized == expected
 
     def test_normalization(self):
         word = "போ"
@@ -62,12 +64,12 @@ class TestRomanizer(unittest.TestCase):
 
     def test_romanize_query(self):
         word = InputWord(
-            user_input="மெய்ந்தன",
-            root=TamilForm(tamil="மெய்"),
+            user_input="மேய்ந்தன",
+            root=TamilForm(tamil="மேய்"),
             suffixal_material={"text": "ந்தன", "gloss": "they did"},
         )
         self.romanizer.romanize_query(word)
 
-        assert word.root.romanization == "mey"
-        assert word.romanization == "meynthana"
+        assert word.root.romanization == "me:y"
+        assert word.romanization == "me:ynthana"
         assert word.suffixal_material['romanization'] == "nthana"
