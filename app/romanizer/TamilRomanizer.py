@@ -3,7 +3,7 @@ import csv
 from pathlib import Path
 
 from app.romanizer.Romanizer import MAPPING_DIR, Romanizer
-
+from app.models import InputWord
 
 class TamilRomanizer(Romanizer):
     
@@ -40,10 +40,8 @@ class TamilRomanizer(Romanizer):
             i = 0
             while i < length:
                 letter = text[i]
-                print(text[i])
                 if i + 2 <= length:
                     cluster = letter + text[i+1]
-                    print(cluster)
                     if cluster in self.mapping:
                         romanized += self.mapping[cluster]
                         i += 2
@@ -57,3 +55,9 @@ class TamilRomanizer(Romanizer):
         pattern = re.compile("|".join(map(re.escape, self.normal_mapping.keys())))
         result = pattern.sub(lambda m: self.normal_mapping[m.group(0)], text)
         return result
+    
+    def romanize_query(self, query: InputWord):
+        query.root.romanization = self.romanize(query.root.tamil)
+        query.romanization = self.romanize(self.normalize(query.user_input))
+        if query.suffixal_material:
+            query.suffixal_material['romanization'] = self.romanize(query.suffixal_material["text"])

@@ -33,6 +33,7 @@ class TamilDictEntry(DictEntry):
 
 class InputWord(BaseModel):
     user_input: str
+    romanization: str | None = None
     root: TamilForm
     root_definition: list[
         DictEntry

@@ -1,3 +1,5 @@
+import logging
+
 from fastapi import APIRouter, HTTPException, Request
 from app.morphology import analyzer
 
@@ -16,5 +18,10 @@ async def read_word(query: str, request: Request):
         isFound = any(d.search_word(result) for d in tamil_dicts.values())
     if not isFound:
         raise HTTPException(status_code=404, detail="Word not found")
+    if isFound:
+        try:
+            request.app.state.romanizer.romanize_query(result)
+        except Exception:
+            logging.error(f'Word: {query}')
     return result
 
