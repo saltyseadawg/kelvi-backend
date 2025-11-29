@@ -5,10 +5,12 @@ import stanza
 from app.routers import words
 from app.data.dictionaries.WordDict import WordDict
 from app.morphology.glosser.Glosser import Glosser
+from app.romanizer.TamilRomanizer import TamilRomanizer
 
 
 tamil_dicts = {}
 dict_names = ["mcalpin", "wiktionary"]
+ROMANIZATION_MAPPING = 'tamil-roman-mapping.csv'
 
 
 @asynccontextmanager
@@ -28,6 +30,7 @@ async def lifespan(app: FastAPI):
     )
     app.state.stanza_pipeline = stanza_pipeline
     app.state.glosser = Glosser()
+    app.state.romanizer = TamilRomanizer(ROMANIZATION_MAPPING)
 
     yield
     tamil_dicts.clear()
