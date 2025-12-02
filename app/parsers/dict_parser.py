@@ -51,49 +51,4 @@ def mcalpin_to_json(input_file: str, output_file: str):
     print(f"✅ mcalpin dictionary output to: {output_file}")
 
 
-def parse_wiktionary_line(line: str) -> tuple[str, TamilDictEntry]:
-    """Parses one JSON line from the Wiktionary-style Tamil dump."""
-    data = json.loads(line)
 
-    tamil_word = data.get("word")
-
-    definitions = []
-    for sense in data.get("senses", []):
-        glosses = sense.get("glosses", [])
-        definitions.extend(glosses)
-
-    related_forms = None
-    if "related" in data:
-        related_forms = [
-            TamilForm(tamil=rf["word"]) for rf in data["related"] if "word" in rf
-        ]
-
-    entry = TamilDictEntry(
-        pos=data.get("pos"),
-        definitions=definitions,
-        related_forms=related_forms,
-        source="wiktionary",
-    )
-
-    return tamil_word, entry
-
-
-def reformat_wiktionary(input_path: str, output_path: str):
-    """Reads the raw JSONL dictionary and writes a reformatted JSONL file."""
-    data = {}
-    with (
-        open(input_path, "r", encoding="utf-8") as infile,
-        open(output_path, "w", encoding="utf-8") as outfile,
-    ):
-        for line in infile:
-            line = line.strip()
-            if not line:
-                continue
-
-            tamil_word, entry = parse_wiktionary_line(line)
-            if tamil_word:
-                # Store as {word: {... entry data ...}}
-                data[tamil_word] = entry
-        outfile.write(
-            json.dumps(data, default=lambda o: o.__dict__, indent=4, ensure_ascii=False)
-        )

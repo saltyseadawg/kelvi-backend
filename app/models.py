@@ -26,7 +26,7 @@ class TamilDictEntry(DictEntry):
     centamil_koduntamil_equiv: Optional[TamilForm] = (
         None  # some words have entirely different forms in the formal (centamil) vs informal (koduntamil) registers, and the dictionary seems to track that
     )
-    related_forms: Optional[list[TamilForm]] = (
+    related_forms: Optional[dict] = (
         None  # often related to centamil_koDuntamil, or perhaps common conjugations of the stem
     )
 
