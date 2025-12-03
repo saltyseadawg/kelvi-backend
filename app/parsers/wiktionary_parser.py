@@ -38,7 +38,9 @@ def reformat_wiktionary(input_path: str, output_path: str):
                 continue
 
             tamil_word, entry = parse_wiktionary_line(line)
-            if tamil_word:
+            if tamil_word in data:
+                data[tamil_word].definitions.extend(entry.definitions)
+            else:
                 # Store as {word: {... entry data ...}}
                 data[tamil_word] = entry
         outfile.write(
