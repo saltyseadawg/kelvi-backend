@@ -22,6 +22,5 @@ async def read_word(query: str, request: Request):
         try:
             request.app.state.romanizer.romanize_query(result)
         except Exception:
-            logging.error(f'Word: {query}')
+            logging.error(f"Word: {query}")
     return result
-

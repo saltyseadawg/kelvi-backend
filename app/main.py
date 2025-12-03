@@ -10,7 +10,7 @@ from app.romanizer.TamilRomanizer import TamilRomanizer
 
 tamil_dicts = {}
 dict_names = ["mcalpin", "wiktionary"]
-ROMANIZATION_MAPPING = 'tamil-roman-mapping.csv'
+ROMANIZATION_MAPPING = "tamil-roman-mapping.csv"
 
 
 @asynccontextmanager
@@ -25,7 +25,7 @@ async def lifespan(app: FastAPI):
         lang="ta",
         processors="tokenize,mwt,pos,lemma",
         # uncomment for local development
-        # download_method="reuse_resources" 
+        # download_method="reuse_resources"
         download_method=None,
     )
     app.state.stanza_pipeline = stanza_pipeline

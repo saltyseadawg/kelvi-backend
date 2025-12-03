@@ -1,9 +1,9 @@
-from app.models import TamilDictEntry, TamilForm
+from app.models import TamilDictEntry
 
-import re
 import json
 
-# use GNU split command to so split raw wikiextract data into smaller files 
+# use GNU split command to so split raw wikiextract data into smaller files
+
 
 def parse_wiktionary_line(line: str) -> tuple[str, TamilDictEntry]:
     """Parses one JSON line from the Wiktionary-style Tamil dump."""
@@ -45,6 +45,7 @@ def reformat_wiktionary(input_path: str, output_path: str):
             json.dumps(data, default=lambda o: o.__dict__, indent=4, ensure_ascii=False)
         )
 
+
 def extract_entries(input_path: str, output_path: str, lang: str):
     """Extract the entries from the raw Wikiextract file of the target language."""
     with (
@@ -55,27 +56,27 @@ def extract_entries(input_path: str, output_path: str, lang: str):
         for line in infile:
             line = line.strip()
             line_data = json.loads(line)
-            if line_data.get('lang', None) == lang:
-                entries.append(line + '\n')
+            if line_data.get("lang", None) == lang:
+                entries.append(line + "\n")
         outfile.writelines(entries)
 
-def parse_related_words(line:str):
+
+def parse_related_words(line: str):
     data = json.loads(line)
-    word = data.get('word')
+    word = data.get("word")
     related = {}
-    synonyms = data.get('synonyms', None)
+    synonyms = data.get("synonyms", None)
     if synonyms:
         for s in synonyms:
-            related[s.get('word')] = None
-    for sense in data.get('senses'):
-        synonyms = sense.get('synonyms', [])
-        definition = sense.get('glosses', None)
+            related[s.get("word")] = None
+    for sense in data.get("senses"):
+        synonyms = sense.get("synonyms", [])
+        definition = sense.get("glosses", None)
         for s in synonyms:
-            related[s.get('word')] = definition
+            related[s.get("word")] = definition
 
     return word, related
-    
-        
+
 
 def add_related_words(raw_data_path: str, modified_data_path: str, output_file: str):
     data = {}
@@ -98,16 +99,11 @@ def add_related_words(raw_data_path: str, modified_data_path: str, output_file: 
                     )
                 else:
                     words_to_add[related_entry] = TamilDictEntry(
-                        definitions=data[word].get('definitions'),
+                        definitions=data[word].get("definitions"),
                         source="wiktionary",
                     )
     data.update(words_to_add)
-    with open(output_file,"w", encoding="utf-8") as out_file:
+    with open(output_file, "w", encoding="utf-8") as out_file:
         out_file.write(
             json.dumps(data, default=lambda o: o.__dict__, indent=4, ensure_ascii=False)
         )
-    
-
-
-
-    

@@ -49,6 +49,3 @@ def mcalpin_to_json(input_file: str, output_file: str):
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(parsed, f, default=lambda o: o.__dict__, indent=4, ensure_ascii=False)
     print(f"✅ mcalpin dictionary output to: {output_file}")
-
-
-

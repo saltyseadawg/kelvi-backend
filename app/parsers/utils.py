@@ -1,8 +1,10 @@
 from pathlib import Path
 import shutil
 
+
 def list_files(folder_path: str) -> tuple:
     return tuple(str(x) for x in Path(folder_path).iterdir() if x.is_file())
+
 
 def combine_files(folder_path: str, out_file: str):
     filenames = list_files(folder_path)

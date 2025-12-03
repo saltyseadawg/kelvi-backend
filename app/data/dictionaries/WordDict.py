@@ -23,5 +23,7 @@ class WordDict:
                 user_input.root_definition.append(TamilDictEntry(**word_data))
                 isFound = True
         except TypeError:
-            logging.warning(f"Input {user_input} with root {root} dict entry is incomplete.")
+            logging.warning(
+                f"Input {user_input} with root {root} dict entry is incomplete."
+            )
         return isFound
