@@ -56,13 +56,10 @@ def analyze_word_gramble(word: str, glosser=None):
         lemma = morphemes["lemma"]
         suffix = morphemes["suffix"]
         gloss = glosser.get_gloss(suffix)
-        suffixal_material = {
-            'text': suffix,
-            'gloss': gloss
-        }
-        
+        suffixal_material = {"text": suffix, "gloss": gloss}
+
     return InputWord(
         user_input=word,
         root=TamilForm(tamil=lemma),
-        suffixal_material=suffixal_material
+        suffixal_material=suffixal_material,
     )

@@ -43,6 +43,7 @@ def test_analyze_word_gramble(glosser_obj):
     )
     assert expected == result
 
+
 def test_analyze_word_gramble_no_lemma(glosser_obj):
     word = "hello"
     result = analyzer.analyze_word_gramble(word, glosser_obj)

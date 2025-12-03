@@ -3,12 +3,12 @@ import unittest
 from app.romanizer.TamilRomanizer import TamilRomanizer
 from app.models import InputWord, TamilForm
 
+
 class TestRomanizer(unittest.TestCase):
     def setUp(self):
-        self.romanizer = TamilRomanizer('tamil-roman-mapping.csv')
+        self.romanizer = TamilRomanizer("tamil-roman-mapping.csv")
 
     def test_romanization(self):
-
         word = "சாவி"
         expected = "cha:vi"
         romanized = self.romanizer.romanize(word)
@@ -53,11 +53,11 @@ class TestRomanizer(unittest.TestCase):
         word = "போ"
         expected = "போ"
         assert self.romanizer.normalize(word) == expected
-        
+
         word = "கௌரவா"
         expected = "கௌரவா"
         assert self.romanizer.normalize(word) == expected
-        
+
         word = "கொள்"
         expected = "கொள்"
         assert self.romanizer.normalize(word) == expected
@@ -72,4 +72,4 @@ class TestRomanizer(unittest.TestCase):
 
         assert word.root.romanization == "me:y"
         assert word.romanization == "me:ynthana"
-        assert word.suffixal_material['romanization'] == "nthana"
+        assert word.suffixal_material["romanization"] == "nthana"
