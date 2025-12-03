@@ -1,4 +1,5 @@
 from app.models import TamilDictEntry
+from app.parsers import utils
 
 import json
 
@@ -9,7 +10,7 @@ def parse_wiktionary_line(line: str) -> tuple[str, TamilDictEntry]:
     """Parses one JSON line from the Wiktionary-style Tamil dump."""
     data = json.loads(line)
 
-    tamil_word = data.get("word")
+    tamil_word = utils.remove_trailing_brackets(data.get("word")).strip()
     definitions = []
     for sense in data.get("senses", []):
         glosses = sense.get("glosses", [])
@@ -65,17 +66,19 @@ def extract_entries(input_path: str, output_path: str, lang: str):
 
 def parse_related_words(line: str):
     data = json.loads(line)
-    word = data.get("word")
+    word = utils.remove_trailing_brackets(data.get("word")).strip()
     related = {}
     synonyms = data.get("synonyms", None)
     if synonyms:
         for s in synonyms:
-            related[s.get("word")] = None
+            related_word = utils.remove_trailing_brackets(s.get("word")).strip()
+            related[related_word] = None
     for sense in data.get("senses"):
         synonyms = sense.get("synonyms", [])
         definition = sense.get("glosses", None)
         for s in synonyms:
-            related[s.get("word")] = definition
+            related_word = utils.remove_trailing_brackets(s.get("word")).strip()
+            related[related_word] = definition
 
     return word, related
 
