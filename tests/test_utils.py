@@ -1,5 +1,6 @@
 from app.parsers import utils
 
+
 def test_remove_trailing_brackets():
     word = "அம்மா (ammā)"
     result = utils.remove_trailing_brackets(word)
