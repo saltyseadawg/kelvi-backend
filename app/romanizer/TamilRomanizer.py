@@ -60,6 +60,6 @@ class TamilRomanizer(Romanizer):
         query.root.romanization = self.romanize(query.root.tamil)
         query.romanization = self.romanize(self.normalize(query.user_input))
         if query.suffixal_material:
-            query.suffixal_material["romanization"] = self.romanize(
-                query.suffixal_material["text"]
+            query.suffixal_material.romanization = self.romanize(
+                query.suffixal_material.display
             )

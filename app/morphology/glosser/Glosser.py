@@ -1,4 +1,7 @@
 import json
+import re
+
+from app.models import Gloss
 
 import marisa_trie
 
@@ -13,12 +16,19 @@ class Glosser:
     https://en.wikipedia.org/wiki/Trie
     """
 
+    BRACKETS_RE = re.compile(r"[\[\]]")
+    NULL_RE = re.compile(r"null$")
+    SEP_HYPHEN_RE = re.compile(r"-(?=[A-Za-z(])")
+
     def __init__(self, filepath=GRAMBLE_TAMIL_FILE):
         self.gloss_dict = {}
         with open(filepath, "r") as file:
             data = json.load(file)
             for item in data:
-                self.gloss_dict[item["text"]] = item["gloss"]
+                self.gloss_dict[item["text"]] = Gloss(
+                    display=self._clean_text(item["display"]),
+                    gloss=self._clean_text(item["gloss"]),
+                )
         self.trie = marisa_trie.Trie(self.gloss_dict.keys())
 
     def find_morphemes(self, word):
@@ -46,6 +56,7 @@ class Glosser:
         """
         inTrie = False
         suffix = word
+        gloss = None
         if word in self.trie:
             suffix = word.replace(lemma, "")
 
@@ -57,8 +68,14 @@ class Glosser:
 
         if inTrie:
             gloss = (substr, self.gloss_dict[substr])
-            return gloss
-        return None
+        return gloss
 
     def get_gloss(self, text):
         return self.gloss_dict.get(text, None)
+
+    def _clean_text(self, s: str) -> str:
+        """Generated with ChatGPT"""
+        s = self.BRACKETS_RE.sub("", s)
+        s = self.NULL_RE.sub("", s)
+        s = self.SEP_HYPHEN_RE.sub(" ", s)
+        return s.strip()
