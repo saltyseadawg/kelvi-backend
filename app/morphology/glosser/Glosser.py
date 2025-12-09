@@ -67,7 +67,7 @@ class Glosser:
                 break
 
         if inTrie:
-            gloss = (substr, self.gloss_dict[substr])
+            gloss = self.gloss_dict.get(substr, None)
         return gloss
 
     def get_gloss(self, text):

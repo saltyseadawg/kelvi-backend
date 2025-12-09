@@ -31,7 +31,9 @@ def analyze_word_stanza(word: str, pipeline=None, glosser=None):
 
     stanza_result = stanza_utils.process_word(pipeline, word)
     lemma = stanza_result.lemma
-    gloss = glosser.gloss_suffix(word, lemma)[1]
+    gloss = None
+    if word != lemma:
+        gloss = glosser.gloss_suffix(word, lemma)
 
     return InputWord(
         user_input=word,
@@ -48,7 +50,8 @@ def analyze_word_gramble(word: str, glosser=None):
     if morphemes:
         lemma = morphemes["lemma"]
         suffix = morphemes["suffix"]
-        gloss = glosser.get_gloss(suffix)
+        if word != lemma:
+            gloss = glosser.get_gloss(suffix)
 
     return InputWord(
         user_input=word,
