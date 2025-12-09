@@ -54,3 +54,14 @@ def test_analyze_word_gramble_no_lemma(glosser_obj):
         suffixal_material=None,
     )
     assert expected == result
+
+def test_analyze_word_stanza_no_suffix(stanza_pipeline):
+    word = "நீந்து"
+    result = analyzer.analyze_word_stanza(word, stanza_pipeline)
+
+    expected = InputWord(
+            user_input=word,
+            root=TamilForm(tamil=word),
+            suffixal_material=None,
+        )
+    assert expected == result
