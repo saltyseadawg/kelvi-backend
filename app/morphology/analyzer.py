@@ -31,35 +31,27 @@ def analyze_word_stanza(word: str, pipeline=None, glosser=None):
 
     stanza_result = stanza_utils.process_word(pipeline, word)
     lemma = stanza_result.lemma
+    gloss = glosser.gloss_suffix(word, lemma)[1]
 
-    gloss_result = glosser.gloss_suffix(word, lemma)
-    suffix = None
-    suffix_gloss = None
-    if gloss_result is not None:
-        suffix = gloss_result[0]
-        suffix_gloss = gloss_result[1]
     return InputWord(
         user_input=word,
         root=TamilForm(tamil=lemma),
-        suffixal_material={"text": suffix, "gloss": suffix_gloss},
+        suffixal_material=gloss,
     )
 
 
 def analyze_word_gramble(word: str, glosser=None):
     morphemes = glosser.find_morphemes(word)
     lemma = word
-    suffix = None
     gloss = None
-    suffixal_material = None
 
     if morphemes:
         lemma = morphemes["lemma"]
         suffix = morphemes["suffix"]
         gloss = glosser.get_gloss(suffix)
-        suffixal_material = {"text": suffix, "gloss": gloss}
 
     return InputWord(
         user_input=word,
         root=TamilForm(tamil=lemma),
-        suffixal_material=suffixal_material,
+        suffixal_material=gloss,
     )

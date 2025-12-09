@@ -1,7 +1,7 @@
 import unittest
 
 from app.romanizer.TamilRomanizer import TamilRomanizer
-from app.models import InputWord, TamilForm
+from app.models import InputWord, TamilForm, Gloss
 
 
 class TestRomanizer(unittest.TestCase):
@@ -66,10 +66,10 @@ class TestRomanizer(unittest.TestCase):
         word = InputWord(
             user_input="மேய்ந்தன",
             root=TamilForm(tamil="மேய்"),
-            suffixal_material={"text": "ந்தன", "gloss": "they did"},
+            suffixal_material=Gloss(display="ந்தன", gloss="they did"),
         )
         self.romanizer.romanize_query(word)
 
         assert word.root.romanization == "me:y"
         assert word.romanization == "me:ynthana"
-        assert word.suffixal_material["romanization"] == "nthana"
+        assert word.suffixal_material.romanization == "nthana"
