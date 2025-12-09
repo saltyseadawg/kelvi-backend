@@ -1,5 +1,6 @@
 import unittest
 from app.morphology.glosser.Glosser import Glosser
+from app.models import Gloss
 
 
 class TestGlosser(unittest.TestCase):
@@ -7,7 +8,23 @@ class TestGlosser(unittest.TestCase):
         self.glosser = Glosser()
 
     def test_gloss_suffix(self):
-        word = "பண்ணாதே"
-        expected = ("ாதே", "don't do it")
+        word = "மரங்களைப்"
+        expected = ("களைப்", Gloss(display="களை", gloss="plural"))
         gloss = self.glosser.gloss_suffix(word)
-        assert gloss == expected
+
+        assert expected == gloss
+
+        word = "குடித்திருக்கமாட்டேன்"
+        expected = (
+            "த்திருக்கமாட்டேன்",
+            Gloss(display="ிருக்கமாட்டேன்", gloss="I wouldn't have done"),
+        )
+        gloss = self.glosser.gloss_suffix(word)
+
+        assert expected == gloss
+
+        word = "நடக்கட்டும்"
+        expected = ("க்கட்டும்", Gloss(display="ட்டும்", gloss="let them/her/him/it do it"))
+        gloss = self.glosser.gloss_suffix(word)
+
+        assert expected == gloss
