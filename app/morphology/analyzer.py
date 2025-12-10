@@ -33,7 +33,7 @@ def analyze_word_stanza(word: str, pipeline=None, glosser=None):
     lemma = stanza_result.lemma
     gloss = None
     if word != lemma:
-        gloss = glosser.gloss_suffix(word, lemma)[1]
+        gloss = glosser.gloss_suffix(word, lemma)
 
     return InputWord(
         user_input=word,
