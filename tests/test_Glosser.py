@@ -9,22 +9,19 @@ class TestGlosser(unittest.TestCase):
 
     def test_gloss_suffix(self):
         word = "மரங்களைப்"
-        expected = ("களைப்", Gloss(display="களை", gloss="plural"))
+        expected = Gloss(display="களை", gloss="plural")
         gloss = self.glosser.gloss_suffix(word)
 
         assert expected == gloss
 
         word = "குடித்திருக்கமாட்டேன்"
-        expected = (
-            "த்திருக்கமாட்டேன்",
-            Gloss(display="ிருக்கமாட்டேன்", gloss="I wouldn't have done"),
-        )
+        expected = Gloss(display="ிருக்கமாட்டேன்", gloss="I wouldn't have done")
         gloss = self.glosser.gloss_suffix(word)
 
         assert expected == gloss
 
         word = "நடக்கட்டும்"
-        expected = ("க்கட்டும்", Gloss(display="ட்டும்", gloss="let them/her/him/it do it"))
+        expected = Gloss(display="ட்டும்", gloss="let them/her/him/it do it")
         gloss = self.glosser.gloss_suffix(word)
 
         assert expected == gloss
