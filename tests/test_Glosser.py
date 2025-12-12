@@ -15,7 +15,7 @@ class TestGlosser(unittest.TestCase):
         assert expected == gloss
 
         word = "குடித்திருக்கமாட்டேன்"
-        expected = Gloss(display="ிருக்கமாட்டேன்", gloss="I wouldn't have done")
+        expected = Gloss(display="ிருக்க-மாட்டேன்", gloss="I wouldn't have done")
         gloss = self.glosser.gloss_suffix(word)
 
         assert expected == gloss
