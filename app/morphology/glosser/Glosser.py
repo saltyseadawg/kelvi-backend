@@ -25,10 +25,13 @@ class Glosser:
         with open(filepath, "r") as file:
             data = json.load(file)
             for item in data:
-                self.gloss_dict[item["text"]] = Gloss(
-                    display=self._clean_text(item["display"]),
-                    gloss=self._clean_text(item["gloss"]),
-                )
+                self.gloss_dict[item["text"]] = {
+                    "display": self._clean_text(item["display"]),
+                    "gloss": self._clean_text(item["gloss"]),
+                }
+                add_back = item.get('add-back')
+                if add_back:
+                    self.gloss_dict[item["text"]]["add-back"] = add_back
         self.trie = marisa_trie.Trie(self.gloss_dict.keys())
 
     def find_morphemes(self, word):
@@ -67,11 +70,20 @@ class Glosser:
                 break
 
         if inTrie:
-            gloss = self.gloss_dict[substr]
+            gloss = self.get_gloss(substr)
         return gloss
 
     def get_gloss(self, text):
-        return self.gloss_dict.get(text, None)
+        item = self.gloss_dict.get(text, None)
+        gloss = None
+        if item:
+            gloss = Gloss(
+                display=item['display'],
+                gloss=item['gloss'],
+                raw=text,
+            )
+        
+        return gloss
 
     def _clean_text(self, s: str) -> str:
         """Generated with ChatGPT"""
@@ -79,3 +91,17 @@ class Glosser:
         s = self.NULL_RE.sub("", s)
         s = self.SEP_HYPHEN_RE.sub(" ", s)
         return s.strip()
+
+    def add_back(self, suffix, stem):
+        """Attempt to add back part of lemma potentially 
+        removed due to morphophonological transformations.
+        """
+        new_stem = stem
+        if suffix in self.trie:
+            to_add = self.gloss_dict[stem].get('add-back', '')
+            new_stem += to_add
+        
+        return new_stem
+    
+    
+    

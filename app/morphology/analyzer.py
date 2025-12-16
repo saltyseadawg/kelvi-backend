@@ -58,3 +58,6 @@ def analyze_word_gramble(word: str, glosser=None):
         root=TamilForm(tamil=lemma),
         suffixal_material=gloss,
     )
+
+def analyze_word_add_back(input_word: InputWord, glosser=None):
+    glosser.add_back(input_word.suffixal_material)
