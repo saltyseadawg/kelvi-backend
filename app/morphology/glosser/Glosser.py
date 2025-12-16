@@ -98,7 +98,7 @@ class Glosser:
         """
         new_stem = stem
         if suffix in self.trie:
-            to_add = self.gloss_dict[stem].get('add-back', '')
+            to_add = self.gloss_dict[suffix].get('add-back', '')
             new_stem += to_add
         
         return new_stem

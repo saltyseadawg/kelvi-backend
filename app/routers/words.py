@@ -19,8 +19,10 @@ async def read_word(query: str, request: Request):
         result = analyzer.analyze_word_gramble(query, request.app.state.glosser)
         isFound = any([d.search_word(result) for d in tamil_dicts.values()])
     if not isFound:
-        
+        # try add back to find lemma
+        analyzer.analyze_word_add_back(result, request.app.state.glosser)
         isFound = any([d.search_word(result) for d in tamil_dicts.values()])
+    if not isFound:
         raise HTTPException(status_code=404, detail="Word not found")
     if isFound:        
         try:
