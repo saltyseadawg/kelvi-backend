@@ -82,6 +82,18 @@ def test_analyze_word_add_back_no_change(glosser_obj):
     )
     assert expected == result
 
+def test_analyze_word_add_back_no_suffix(glosser_obj):
+    word = "hello"
+    result = analyzer.analyze_word_gramble(word, glosser_obj)
+    analyzer.analyze_word_add_back(result, glosser_obj)
+    
+    expected = InputWord(
+        user_input=word,
+        root=TamilForm(tamil="hello"),
+        suffixal_material=None,
+    )
+    assert expected == result
+
 
 # def test_analyze_word_add_back_change(glosser_obj):
 #     word = "அவனுக்கு"

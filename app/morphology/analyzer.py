@@ -62,5 +62,7 @@ def analyze_word_gramble(word: str, glosser=None):
 def analyze_word_add_back(input_word: InputWord, glosser=None):
     if glosser is None:
         glosser = Glosser()
-    new_lemma = glosser.add_back(input_word.suffixal_material.raw, input_word.root.tamil)
+    new_lemma = input_word.root.tamil
+    if input_word.suffixal_material:
+        new_lemma = glosser.add_back(input_word.suffixal_material.raw, input_word.root.tamil)
     input_word.root.tamil = new_lemma
