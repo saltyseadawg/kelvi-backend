@@ -15,13 +15,17 @@ class TestGlosser(unittest.TestCase):
         assert expected == gloss
 
         word = "குடித்திருக்கமாட்டேன்"
-        expected = Gloss(display="ிருக்க-மாட்டேன்", gloss=["I wouldn't have done"], raw="த்திருக்கமாட்டேன்")
+        expected = Gloss(
+            display="ிருக்க-மாட்டேன்", gloss=["I wouldn't have done"], raw="த்திருக்கமாட்டேன்"
+        )
         gloss = self.glosser.gloss_suffix(word)
 
         assert expected == gloss
 
         word = "நடக்கட்டும்"
-        expected = Gloss(display="ட்டும்", gloss=["let them/her/him/it do it"], raw="க்கட்டும்")
+        expected = Gloss(
+            display="ட்டும்", gloss=["let them/her/him/it do it"], raw="க்கட்டும்"
+        )
         gloss = self.glosser.gloss_suffix(word)
 
         assert expected == gloss
@@ -31,11 +35,10 @@ class TestGlosser(unittest.TestCase):
         result = self.glosser.get_gloss(suffix)
         expected = Gloss(
             display="ும்",
-            gloss=set(["and/also","thing that will be doing", "it will"]), 
-            raw='ும்', 
-            romanization=None
+            gloss=set(["and/also", "thing that will be doing", "it will"]),
+            raw="ும்",
+            romanization=None,
         )
-        
 
         assert expected == result
 
