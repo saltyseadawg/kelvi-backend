@@ -32,7 +32,6 @@ class Glosser:
                     # take longest display for now
                     if len(item["display"]) > len(self.gloss_dict[text]["display"]):
                         self.gloss_dict[text]["display"] = item["display"]
-                        self.gloss_dict[text]["add-back"] = item["add-back"]
 
                 else:
                     self.gloss_dict[text] = {
