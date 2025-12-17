@@ -66,7 +66,7 @@ class TestRomanizer(unittest.TestCase):
         word = InputWord(
             user_input="மேய்ந்தன",
             root=TamilForm(tamil="மேய்"),
-            suffixal_material=Gloss(display="ந்தன", gloss="they did", raw="ந்தன"),
+            suffixal_material=Gloss(display="ந்தன", gloss=["they did"], raw="ந்தன"),
         )
         self.romanizer.romanize_query(word)
 

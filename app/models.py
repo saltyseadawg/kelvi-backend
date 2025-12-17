@@ -33,7 +33,7 @@ class TamilDictEntry(DictEntry):
 
 class Gloss(BaseModel):
     display: str
-    gloss: str
+    gloss: list[str]
     raw: str
     romanization: str | None = None
 

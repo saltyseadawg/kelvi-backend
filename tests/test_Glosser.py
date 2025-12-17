@@ -9,22 +9,35 @@ class TestGlosser(unittest.TestCase):
 
     def test_gloss_suffix(self):
         word = "மரங்களைப்"
-        expected = Gloss(display="களை", gloss="plural", raw="களைப்")
+        expected = Gloss(display="களை", gloss=["plural"], raw="களைப்")
         gloss = self.glosser.gloss_suffix(word)
 
         assert expected == gloss
 
         word = "குடித்திருக்கமாட்டேன்"
-        expected = Gloss(display="ிருக்க-மாட்டேன்", gloss="I wouldn't have done", raw="த்திருக்கமாட்டேன்")
+        expected = Gloss(display="ிருக்க-மாட்டேன்", gloss=["I wouldn't have done"], raw="த்திருக்கமாட்டேன்")
         gloss = self.glosser.gloss_suffix(word)
 
         assert expected == gloss
 
         word = "நடக்கட்டும்"
-        expected = Gloss(display="ட்டும்", gloss="let them/her/him/it do it", raw="க்கட்டும்")
+        expected = Gloss(display="ட்டும்", gloss=["let them/her/him/it do it"], raw="க்கட்டும்")
         gloss = self.glosser.gloss_suffix(word)
 
         assert expected == gloss
+
+    def test_get_gloss_multiple_defns(self):
+        suffix = "ும்"
+        result = self.glosser.get_gloss(suffix)
+        expected = Gloss(
+            display="ும்",
+            gloss=set(["and/also","thing that will be doing", "it will"]), 
+            raw='ும்', 
+            romanization=None
+        )
+        
+
+        assert expected == result
 
     def test_add_back(self):
         stem = "பாட"

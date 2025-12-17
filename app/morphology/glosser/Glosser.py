@@ -25,13 +25,21 @@ class Glosser:
         with open(filepath, "r") as file:
             data = json.load(file)
             for item in data:
-                self.gloss_dict[item["text"]] = {
-                    "display": item["display"],
-                    "gloss": item["gloss"],
-                }
-                add_back = item.get('add-back')
-                if add_back:
-                    self.gloss_dict[item["text"]]["add-back"] = add_back
+                text = item['text']
+
+                if text in self.gloss_dict:
+                    self.gloss_dict[text]['gloss'].add(item['gloss'])
+                    # take longest display for now
+                    if len(item['display']) > len(self.gloss_dict[text]['display']):
+                        self.gloss_dict[text]['display'] = item['display']
+                        self.gloss_dict[text]['add-back'] = item['add-back']
+                    
+                else:
+                    self.gloss_dict[text] = {
+                        "display": item["display"],
+                        "gloss": set([item["gloss"]]),
+                        "add-back": item['add-back']
+                    }
         self.trie = marisa_trie.Trie(self.gloss_dict.keys())
 
     def find_morphemes(self, word):

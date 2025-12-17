@@ -27,7 +27,7 @@ def test_analyze_word_stanza(stanza_pipeline):
     expected = InputWord(
         user_input=word,
         root=TamilForm(tamil="இரு"),
-        suffixal_material=Gloss(display="ந்தேன்", gloss="I did", raw="ந்தேன்"),
+        suffixal_material=Gloss(display="ந்தேன்", gloss=["I did"], raw="ந்தேன்"),
     )
     assert expected == result
 
@@ -39,7 +39,7 @@ def test_analyze_word_gramble(glosser_obj):
     expected = InputWord(
         user_input=word,
         root=TamilForm(tamil="மெய்"),
-        suffixal_material=Gloss(display="ந்தன", gloss="they did", raw="ந்தன"),
+        suffixal_material=Gloss(display="ந்தன", gloss=["they did"], raw="ந்தன"),
     )
     assert expected == result
 
@@ -76,7 +76,7 @@ def test_analyze_word_add_back_no_change(glosser_obj):
         root=TamilForm(tamil="போடு"),
         suffixal_material=Gloss(
             display="ட்டான்",
-            gloss="he did",
+            gloss=["he did"],
             raw="ட்டான்"
         ),
     )
