@@ -25,13 +25,20 @@ class Glosser:
         with open(filepath, "r") as file:
             data = json.load(file)
             for item in data:
-                self.gloss_dict[item["text"]] = {
-                    "display": item["display"],
-                    "gloss": item["gloss"],
-                }
-                add_back = item.get('add-back')
-                if add_back:
-                    self.gloss_dict[item["text"]]["add-back"] = add_back
+                text = item["text"]
+
+                if text in self.gloss_dict:
+                    self.gloss_dict[text]["gloss"].add(item["gloss"])
+                    # take longest display for now
+                    if len(item["display"]) > len(self.gloss_dict[text]["display"]):
+                        self.gloss_dict[text]["display"] = item["display"]
+
+                else:
+                    self.gloss_dict[text] = {
+                        "display": item["display"],
+                        "gloss": set([item["gloss"]]),
+                        "add-back": item["add-back"],
+                    }
         self.trie = marisa_trie.Trie(self.gloss_dict.keys())
 
     def find_morphemes(self, word):
@@ -78,11 +85,11 @@ class Glosser:
         gloss = None
         if item:
             gloss = Gloss(
-                display=item['display'],
-                gloss=item['gloss'],
+                display=item["display"],
+                gloss=item["gloss"],
                 raw=text,
             )
-        
+
         return gloss
 
     def _clean_text(self, s: str) -> str:
@@ -93,15 +100,12 @@ class Glosser:
         return s.strip()
 
     def add_back(self, suffix, stem):
-        """Attempt to add back part of lemma potentially 
+        """Attempt to add back part of lemma potentially
         removed due to morphophonological transformations.
         """
         new_stem = stem
         if suffix in self.trie:
-            to_add = self.gloss_dict[suffix].get('add-back', '')
+            to_add = self.gloss_dict[suffix].get("add-back", "")
             new_stem += to_add
-        
+
         return new_stem
-    
-    
-    
