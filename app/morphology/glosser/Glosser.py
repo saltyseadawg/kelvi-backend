@@ -26,8 +26,8 @@ class Glosser:
             data = json.load(file)
             for item in data:
                 self.gloss_dict[item["text"]] = {
-                    "display": self._clean_text(item["display"]),
-                    "gloss": self._clean_text(item["gloss"]),
+                    "display": item["display"],
+                    "gloss": item["gloss"],
                 }
                 add_back = item.get('add-back')
                 if add_back:
