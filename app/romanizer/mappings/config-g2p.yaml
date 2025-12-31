@@ -1,0 +1,51 @@
+<<: &shared
+  language_name: Tamil
+mappings:
+  - display_name: romanization normalization
+    in_lang: romanization
+    out_lang: romanization-equiv
+    authors:
+      - Shankhalika Srikanth
+    type: mapping
+    rules_path: romanization_equiv.csv
+    prevent_feeding: false
+    rule_ordering: longest-first
+    case_sensitive: true
+    norm_form: NFD
+    <<: *shared
+  - display_name: romanization to Tamil
+    in_lang: romanization-equiv
+    out_lang: tamil
+    authors:
+      - Shankhalika Srikanth
+    type: mapping
+    rules_path: romanization_to_tamil.csv
+    prevent_feeding: true
+    rule_ordering: longest-first
+    case_sensitive: true
+    norm_form: NFD
+    <<: *shared
+  - display_name: Tamil normalization
+    in_lang: tamil
+    out_lang: tamil-equiv
+    authors:
+      - Shankhalika Srikanth
+    type: mapping
+    rules_path: tamil_equiv.csv
+    prevent_feeding: true
+    rule_ordering: longest-first
+    case_sensitive: false
+    norm_form: NFD
+    <<: *shared
+  - display_name: Tamil to romanization
+    in_lang: tamil-equiv
+    out_lang: romanization
+    authors:
+      - Shankhalika Srikanth
+    type: mapping
+    rules_path: tamil_to_romanization.csv
+    prevent_feeding: true
+    rule_ordering: longest-first
+    case_sensitive: true
+    norm_form: NFD
+    <<: *shared
