@@ -20,8 +20,9 @@ mappings:
       - Shankhalika Srikanth
     type: mapping
     rules_path: romanization_to_tamil.csv
+    abbreviations_path: tam_abbs.csv
     prevent_feeding: true
-    rule_ordering: apply-longest-first
+    rule_ordering: as-written
     case_sensitive: true
     norm_form: NFD
     <<: *shared
