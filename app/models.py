@@ -40,8 +40,9 @@ class Gloss(BaseModel):
 
 class InputWord(BaseModel):
     user_input: str
+    processed_input: TamilForm | None = None
     romanization: str | None = None
-    root: TamilForm
+    root: TamilForm | None = None
     root_definition: list[
         DictEntry
     ] = []  # stretch goal to segment compound words; for now want to just capture them unsegmented

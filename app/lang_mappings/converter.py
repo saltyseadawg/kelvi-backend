@@ -1,3 +1,5 @@
+import logging
+
 from g2p import make_g2p
 
 class Converter:
@@ -5,5 +7,7 @@ class Converter:
         self.transducer = make_g2p(in_lang, out_lang)
 
     def convert(self, input: str):
-        return self.transducer(input).output_string
-
+        try:
+            return self.transducer(input).output_string
+        except Exception:
+            logging.error(f"Failed to convert: {input}")
