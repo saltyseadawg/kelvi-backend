@@ -1,4 +1,4 @@
-from app.models import TamilDictEntry, InputWord
+from app.models import TamilDictEntry
 
 import json
 import logging
@@ -14,16 +14,13 @@ class WordDict:
         with open(dict_path, "r", encoding="utf-8") as f:
             self.data = json.load(f)
 
-    def search_word(self, user_input: InputWord) -> bool:
-        root = user_input.root.tamil
-        isFound = False
+    def search_word(self, root: str) -> list:
+        defns = []
         try:
             if root in self.data:
                 word_data = self.data[root]
-                user_input.root_definition.append(TamilDictEntry(**word_data))
+                defns.append(TamilDictEntry(**word_data))
                 isFound = True
         except TypeError:
-            logging.warning(
-                f"Input {user_input} with root {root} dict entry is incomplete."
-            )
-        return isFound
+            logging.warning(f"{root} dict entry is incomplete.")
+        return defns

@@ -1,4 +1,3 @@
-from app.models import InputWord, TamilForm
 from app.morphology import stanza_utils
 from app.morphology.glosser.Glosser import Glosser
 
@@ -35,11 +34,7 @@ def analyze_word_stanza(word: str, pipeline=None, glosser=None):
     if word != lemma:
         gloss = glosser.gloss_suffix(word, lemma)
 
-    return InputWord(
-        user_input=word,
-        root=TamilForm(tamil=lemma),
-        suffixal_material=gloss,
-    )
+    return lemma, gloss
 
 
 def analyze_word_gramble(word: str, glosser=None):
@@ -53,19 +48,13 @@ def analyze_word_gramble(word: str, glosser=None):
         if word != lemma:
             gloss = glosser.get_gloss(suffix)
 
-    return InputWord(
-        user_input=word,
-        root=TamilForm(tamil=lemma),
-        suffixal_material=gloss,
-    )
+    return lemma, gloss
 
 
-def analyze_word_add_back(input_word: InputWord, glosser=None):
+def analyze_word_add_back(stem, suffixal_material, glosser=None):
     if glosser is None:
         glosser = Glosser()
-    new_lemma = input_word.root.tamil
-    if input_word.suffixal_material:
-        new_lemma = glosser.add_back(
-            input_word.suffixal_material.raw, input_word.root.tamil
-        )
-    input_word.root.tamil = new_lemma
+    new_lemma = stem
+    if suffixal_material:
+        new_lemma = glosser.add_back(suffixal_material.raw, stem)
+    return new_lemma

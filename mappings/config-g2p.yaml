@@ -9,7 +9,7 @@ mappings:
     type: mapping
     rules_path: romanization_equiv.csv
     prevent_feeding: false
-    rule_ordering: longest-first
+    rule_ordering: apply-longest-first
     case_sensitive: true
     norm_form: NFD
     <<: *shared
@@ -20,8 +20,9 @@ mappings:
       - Shankhalika Srikanth
     type: mapping
     rules_path: romanization_to_tamil.csv
+    abbreviations_path: tam_abbs.csv
     prevent_feeding: true
-    rule_ordering: longest-first
+    rule_ordering: as-written
     case_sensitive: true
     norm_form: NFD
     <<: *shared
@@ -33,7 +34,7 @@ mappings:
     type: mapping
     rules_path: tamil_equiv.csv
     prevent_feeding: true
-    rule_ordering: longest-first
+    rule_ordering: apply-longest-first
     case_sensitive: false
     norm_form: NFD
     <<: *shared
@@ -45,7 +46,7 @@ mappings:
     type: mapping
     rules_path: tamil_to_romanization.csv
     prevent_feeding: true
-    rule_ordering: longest-first
+    rule_ordering: apply-longest-first
     case_sensitive: true
     norm_form: NFD
     <<: *shared
