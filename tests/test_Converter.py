@@ -68,10 +68,10 @@ class TestTamilization(unittest.TestCase):
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        # word = "eeram"	
-        # expected = "ஈரம்"
-        # tamil = self.converter.convert(word)
-        # assert tamil == expected
+        word = "eeram"	
+        expected = "ஈரம்"
+        tamil = self.converter.convert(word)
+        assert tamil == expected
         # rule ordering gives ஏரம்
 
 
@@ -85,10 +85,10 @@ class TestTamilization(unittest.TestCase):
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        # word = "oonjal"	
-        # expected = "ஊஞ்சல்"
-        # tamil = self.converter.convert(word)
-        # assert tamil == expected
+        word = "oonjal"	
+        expected = "ஊஞ்சல்"
+        tamil = self.converter.convert(word)
+        assert tamil == expected
         # ஓஞ்சல்
 
         word = "aivar"	
@@ -126,11 +126,10 @@ class TestTamilization(unittest.TestCase):
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        # word = "chandhramukhi"	
-        # expected = "சந்திரமுகி"
-        # tamil = self.converter.convert(word)
-        # assert tamil == expected
-        # n never has [td] environment bc dhr converts
+        word = "chandhramukhi"	
+        expected = "சந்திரமுகி"
+        tamil = self.converter.convert(word)
+        assert tamil == expected
 
         word = "oṭṭagam"	
         expected = "ஒட்டகம்"
@@ -187,17 +186,15 @@ class TestTamilization(unittest.TestCase):
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        # word = "jeeraam"	
-        # expected = "ஜீராம்"
-        # tamil = self.converter.convert(word)
-        # assert tamil == expected 
+        word = "jeeraam"	
+        expected = "ஜீராம்"
+        tamil = self.converter.convert(word)
+        assert tamil == expected 
 
-        # word = "shankha"	
-        # expected = "ஷங்க"
-        # tamil = self.converter.convert(word)
-        # assert tamil == expected
-        # ஷன்க ng -> ங், i tried nk adding n[kg] but broke stuff
-
+        word = "shankha"	
+        expected = "ஷன்க"
+        tamil = self.converter.convert(word)
+        assert tamil == expected
 
         word = "hai"	
         expected = "ஹை"
