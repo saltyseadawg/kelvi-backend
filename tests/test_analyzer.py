@@ -1,6 +1,6 @@
 from app.morphology import analyzer
 from app.morphology.glosser.Glosser import Glosser
-from app.models import InputWord, TamilForm, Gloss
+from app.models import Gloss
 
 import pytest
 import stanza
@@ -34,7 +34,7 @@ def test_analyze_word_stanza(stanza_pipeline):
 def test_analyze_word_gramble(glosser_obj):
     word = "மெய்ந்தன"
     lemma, suffix = analyzer.analyze_word_gramble(word, glosser_obj)
-    
+
     expected_lemma = "மெய்"
     expected_suffix = Gloss(display="ந்தன", gloss=["they did"], raw="ந்தன")
 

@@ -2,9 +2,10 @@ import unittest
 
 from app.lang_mappings.converter import Converter
 
+
 class TestRomanization(unittest.TestCase):
     def setUp(self):
-        self.romanizer = Converter('tamil', 'romanization')
+        self.romanizer = Converter("tamil", "romanization")
 
     def test_romanization(self):
         word = "சாவி"
@@ -47,158 +48,159 @@ class TestRomanization(unittest.TestCase):
 
         assert romanized == expected
 
+
 class TestTamilization(unittest.TestCase):
     def setUp(self):
-        self.converter = Converter('romanization', 'tamil')
-    
+        self.converter = Converter("romanization", "tamil")
+
     def test_tamilization(self):
-        word = "arisi"	
+        word = "arisi"
         expected = "அரிசி"
 
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "aaDu"	
+        word = "aaDu"
         expected = "ஆடு"
-        tamil = self.converter.convert(word)
-        assert tamil == expected	
-
-        word = "ilai"	
-        expected = "இலை"	
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "eeram"	
+        word = "ilai"
+        expected = "இலை"
+        tamil = self.converter.convert(word)
+        assert tamil == expected
+
+        word = "eeram"
         expected = "ஈரம்"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "uthaDu"	
+        word = "uthaDu"
         expected = "உதடு"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "udhaDu"	
+        word = "udhaDu"
         expected = "உதடு"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "oonjal"	
+        word = "oonjal"
         expected = "ஊஞ்சல்"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "aivar"	
+        word = "aivar"
         expected = "ஐவர்"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "oTTagam"	
+        word = "oTTagam"
         expected = "ஒட்டகம்"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "ODam"	
+        word = "ODam"
         expected = "ஓடம்"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "owvvai"	
+        word = "owvvai"
         expected = "ஔவ்வை"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "auDadham"	
+        word = "auDadham"
         expected = "ஔடதம்"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "kurangu"	
+        word = "kurangu"
         expected = "குரங்கு"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "nya:nam"	
+        word = "nya:nam"
         expected = "ஞானம்"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "chandhramukhi"	
+        word = "chandhramukhi"
         expected = "சந்திரமுகி"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "oṭṭagam"	
+        word = "oṭṭagam"
         expected = "ஒட்டகம்"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "aNNam"	
+        word = "aNNam"
         expected = "அண்ணம்"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "thamizh"	
+        word = "thamizh"
         expected = "தமிழ்"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "pazham"	
+        word = "pazham"
         expected = "பழம்"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "balam"	
+        word = "balam"
         expected = "பலம்"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "yAr"	
+        word = "yAr"
         expected = "யார்"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "ka:ttru"	
+        word = "ka:ttru"
         expected = "காற்று"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "paLLi"	
+        word = "paLLi"
         expected = "பள்ளி"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "vAram"	
+        word = "vAram"
         expected = "வாரம்"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "manam"	
+        word = "manam"
         expected = "மனம்"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "mahan"	
+        word = "mahan"
         expected = "மகன்"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "jeeraam"	
+        word = "jeeraam"
         expected = "ஜீராம்"
         tamil = self.converter.convert(word)
-        assert tamil == expected 
+        assert tamil == expected
 
-        word = "shankha"	
+        word = "shankha"
         expected = "ஷன்க"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "hai"	
+        word = "hai"
         expected = "ஹை"
         tamil = self.converter.convert(word)
         assert tamil == expected
 
-        word = "thanḍam"	
+        word = "thanḍam"
         expected = "தண்டம்"
         tamil = self.converter.convert(word)
         assert tamil == expected

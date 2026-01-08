@@ -1,4 +1,3 @@
-from app.models import InputWord, TamilForm
 from app.morphology import stanza_utils
 from app.morphology.glosser.Glosser import Glosser
 
@@ -57,7 +56,5 @@ def analyze_word_add_back(stem, suffixal_material, glosser=None):
         glosser = Glosser()
     new_lemma = stem
     if suffixal_material:
-        new_lemma = glosser.add_back(
-            suffixal_material.raw, stem
-        )
+        new_lemma = glosser.add_back(suffixal_material.raw, stem)
     return new_lemma

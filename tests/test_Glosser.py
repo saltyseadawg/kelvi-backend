@@ -50,7 +50,7 @@ class TestGlosser(unittest.TestCase):
         result = self.glosser.add_back(suffix, stem)
         assert expected == result
 
-        # doesn't work rn, will be fixed after migrating to db 
+        # doesn't work rn, will be fixed after migrating to db
         # stem = "பண்ண"
         # suffix = "ட்டும்"
         # expected = "பண்ணு"

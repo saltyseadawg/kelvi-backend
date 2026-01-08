@@ -4,7 +4,7 @@ from unittest.mock import mock_open, patch
 
 # Import your class and dependencies
 from app.data.dictionaries.WordDict import WordDict
-from app.models import InputWord, TamilForm, TamilDictEntry
+from app.models import TamilDictEntry
 
 
 @pytest.fixture
@@ -29,7 +29,7 @@ def test_search_word_found(sample_dict_data):
         with patch("json.load", return_value=sample_dict_data):
             wd = WordDict(dict_filepath="test_dict")
 
-    result = wd.search_word('அகராதி')
+    result = wd.search_word("அகராதி")
 
     assert len(result) == 1
     assert isinstance(result[0], TamilDictEntry)
@@ -42,8 +42,9 @@ def test_search_word_not_found(sample_dict_data):
     with patch("builtins.open", mock_open(read_data=mock_file_content)):
         with patch("json.load", return_value=sample_dict_data):
             wd = WordDict(dict_filepath="test_dict")
-    result = wd.search_word('iamnotaword')
+    result = wd.search_word("iamnotaword")
     assert not result
+
 
 def test_init_loads_correct_file():
     with patch("builtins.open", mock_open(read_data="{}")) as mock_file:

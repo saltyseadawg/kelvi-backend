@@ -30,8 +30,8 @@ async def lifespan(app: FastAPI):
     )
     app.state.stanza_pipeline = stanza_pipeline
     app.state.glosser = Glosser()
-    app.state.romanizer = Converter('tamil', 'romanization')
-    app.state.tamilizer = Converter('romanization', 'tamil')
+    app.state.romanizer = Converter("tamil", "romanization")
+    app.state.tamilizer = Converter("romanization", "tamil")
 
     yield
     tamil_dicts.clear()
