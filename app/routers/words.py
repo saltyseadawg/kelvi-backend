@@ -15,12 +15,15 @@ async def read_word(query: str, request: Request):
     first_word = word_data.user_input.split()[0]
     # unable to handle any hybrid Tamil + romanization words
     if re.search("[a-zA-Z]", word_data.user_input):
+        tamil = request.app.state.tamilizer.convert(first_word)
+        tamil = re.sub("[a-zA-Z]", '', tamil)
+        roman = request.app.state.romanizer.convert(tamil)
         word_data.processed_input = TamilForm(
-            tamil=request.app.tamilizer.convert(first_word), romanization=first_word
+            tamil=tamil, romanization = roman
         )
     else:
         word_data.processed_input = TamilForm(
-            tamil=first_word, romanization=request.app.romanizer.convert(first_word)
+            tamil=first_word, romanization=request.app.state.romanizer.convert(first_word)
         )
 
     # try lemmatizer
@@ -47,8 +50,13 @@ async def read_word(query: str, request: Request):
             defns.extend(d.search_word(lemma))
     if not defns:
         raise HTTPException(status_code=404, detail="Word not found")
-    word_data.root.tamil = lemma
-    word_data.suffixal_material = suffixal_material
-    word_data.root.romanization = request.app.state.romanizer.convert(lemma)
+    word_data.root_definition = defns
+    word_data.root = TamilForm(
+        tamil=lemma,
+        romanization=request.app.state.romanizer.convert(lemma)
+    )
+    if suffixal_material:
+        suffixal_material.romanization = request.app.state.romanizer.convert(suffixal_material.display)
+        word_data.suffixal_material = suffixal_material
 
     return word_data

@@ -5,7 +5,7 @@ import stanza
 from app.routers import words
 from app.data.dictionaries.WordDict import WordDict
 from app.morphology.glosser.Glosser import Glosser
-from app.lang_mappings.converter import Converter
+from app.lang_mappings.converter import Converter, Romanizer
 
 
 tamil_dicts = {}
@@ -30,7 +30,7 @@ async def lifespan(app: FastAPI):
     )
     app.state.stanza_pipeline = stanza_pipeline
     app.state.glosser = Glosser()
-    app.state.romanizer = Converter("tamil", "romanization")
+    app.state.romanizer = Romanizer("tamil", "romanization")
     app.state.tamilizer = Converter("romanization", "tamil")
 
     yield

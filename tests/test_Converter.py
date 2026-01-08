@@ -1,11 +1,11 @@
 import unittest
 
-from app.lang_mappings.converter import Converter
+from app.lang_mappings.converter import Converter, Romanizer
 
 
 class TestRomanization(unittest.TestCase):
     def setUp(self):
-        self.romanizer = Converter("tamil", "romanization")
+        self.romanizer = Romanizer("tamil", "romanization")
 
     def test_romanization(self):
         word = "சாவி"
