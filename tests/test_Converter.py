@@ -72,8 +72,6 @@ class TestTamilization(unittest.TestCase):
         expected = "ஈரம்"
         tamil = self.converter.convert(word)
         assert tamil == expected
-        # rule ordering gives ஏரம்
-
 
         word = "uthaDu"	
         expected = "உதடு"
@@ -89,7 +87,6 @@ class TestTamilization(unittest.TestCase):
         expected = "ஊஞ்சல்"
         tamil = self.converter.convert(word)
         assert tamil == expected
-        # ஓஞ்சல்
 
         word = "aivar"	
         expected = "ஐவர்"
