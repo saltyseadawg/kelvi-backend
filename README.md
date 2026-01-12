@@ -23,7 +23,7 @@ Prerequisites: Install [`uv`](https://docs.astral.sh/uv/getting-started/installa
     ```
     pre-commit run --all
     ```
-4. Update mappings for `g2p`
+4. Update mappings for `g2p` (note: your Python version might differ)
     ```
     mkdir .venv/lib/python3.13/site-packages/g2p/mappings/langs/tam
     cp mappings/* .venv/lib/python3.13/site-packages/g2p/mappings/langs/tam/
