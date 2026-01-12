@@ -23,7 +23,13 @@ Prerequisites: Install [`uv`](https://docs.astral.sh/uv/getting-started/installa
     ```
     pre-commit run --all
     ```
-4. Start the FastAPI server
+4. Update mappings for `g2p` (note: your Python version might differ)
     ```
-    uv run fastapi run app/main.py
+    mkdir .venv/lib/python3.13/site-packages/g2p/mappings/langs/tam
+    cp mappings/* .venv/lib/python3.13/site-packages/g2p/mappings/langs/tam/
+    g2p update
+    ```
+5. Start the FastAPI server
+    ```
+    uv run uvicorn app.main:app
     ```
