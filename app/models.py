@@ -7,13 +7,13 @@ class TamilForm(
     BaseModel
 ):  # any Tamil form/string has to have the form in Tamil orthography and optionally romanization
     tamil: str
-    romanization: str | None = (
+    romanization: Optional[str] = (
         None  # this will eventually call on the romanization function? maybe we won't even need to store it?
     )
 
 
 class DictEntry(BaseModel, abc.ABC):
-    pos: str | None = None
+    pos: Optional[str] = None
     definitions: list[str]
     examples: Optional[list] = (
         None  # list of ids that reference an example containing the word (examples would be in their own table in a DB)
@@ -22,7 +22,7 @@ class DictEntry(BaseModel, abc.ABC):
 
 
 class TamilDictEntry(DictEntry):
-    romanization: str | None = None
+    romanization: Optional[str] = None
     centamil_koduntamil_equiv: Optional[TamilForm] = (
         None  # some words have entirely different forms in the formal (centamil) vs informal (koduntamil) registers, and the dictionary seems to track that
     )
@@ -35,17 +35,17 @@ class Gloss(BaseModel):
     display: str
     gloss: list[str]
     raw: str
-    romanization: str | None = None
+    romanization: Optional[str] = None
 
 
 class InputWord(BaseModel):
     user_input: str
-    processed_input: TamilForm | None = None
-    romanization: str | None = None
-    root: TamilForm | None = None
+    processed_input: Optional[TamilForm] = None
+    romanization: Optional[str] = None
+    root: Optional[TamilForm] = None
     root_definition: list[
         DictEntry
     ] = []  # stretch goal to segment compound words; for now want to just capture them unsegmented
-    prefixal_material: Gloss | None = None  # to get passed to gramble for parsing
-    suffixal_material: Gloss | None = None  # to get passed to gramble for parsing
-    infixal_material: Gloss | None = None  # not relevant for Tamil
+    prefixal_material: Optional[Gloss] = None  # to get passed to gramble for parsing
+    suffixal_material: Optional[Gloss] = None  # to get passed to gramble for parsing
+    infixal_material: Optional[Gloss] = None  # not relevant for Tamil
