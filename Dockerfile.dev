@@ -1,0 +1,14 @@
+FROM saltyseadawg/kelvi-backend
+
+WORKDIR /code
+
+COPY /requirements/requirements.txt /code/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+COPY ./tests /code/tests
+
+# update g2p
+RUN ["mkdir", "-p", "/usr/local/lib/python3.11/site-packages/g2p/mappings/langs/tam"]
+COPY ./mappings/* /usr/local/lib/python3.11/site-packages/g2p/mappings/langs/tam
+RUN ["g2p", "update"]
+
+CMD ["/bin/sh", "-c"]
