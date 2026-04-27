@@ -33,3 +33,13 @@ Prerequisites: Install [`uv`](https://docs.astral.sh/uv/getting-started/installa
     ```
     uv run uvicorn app.main:app
     ```
+
+## Testing
+1. Update docker images 
+   ``` 
+   make update-test-env
+   ```
+2. Run test command
+   ```
+   make test
+   ```
