@@ -15,14 +15,12 @@ class Converter:
             logging.error(f"Failed to convert: {input}")
 
 
-
-
 class Romanizer(Converter):
-    NO_TAMIL_RE = re.compile(r'^[^\u0B80-\u0BFF]*$')
+    NO_TAMIL_RE = re.compile(r"^[^\u0B80-\u0BFF]*$")
 
     def convert(self, input: str):
         roman = self.transducer(input).output_string
         if not bool(self.NO_TAMIL_RE.match(roman)):
-            roman = ''
+            roman = ""
             logging.error(f"Failed to romanize: {input}")
-        return roman 
+        return roman
