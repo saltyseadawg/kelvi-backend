@@ -35,11 +35,13 @@ Prerequisites: Install [`uv`](https://docs.astral.sh/uv/getting-started/installa
     ```
 
 ## Testing
+If using apple, use gmake instead of make. 
+
 1. Update docker images 
    ``` 
    make update-test-env
    ```
 2. Run test command
    ```
-   make test
+   make test 
    ```
