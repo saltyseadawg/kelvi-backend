@@ -1,7 +1,7 @@
 # Kelvi Backend
 
-The backend for Kelvi, a "smart" Tamil dictionary.
-
+The backend for [Kelvi](https://kelvi.ca/), a "smart" Tamil dictionary.
+See the frontend [here](https://github.com/saltyseadawg/kelvi-frontend).
 
 ## Dictionaries used
 - [mcalpin](https://github.com/indic-dict/stardict-tamil)
@@ -45,3 +45,16 @@ If using apple, use gmake instead of make.
    ```
    make test 
    ```
+
+## Usage
+After starting the FastApi server, interact with the API by launching a web browser and navigating to the (localhost:8000/docs)[localhost:8000/docs].
+
+## Citation
+
+Please cite us if you use this work in a project. 
+
+Shankhalika Srikanth, Sabrina Yu, Sophia Chan, and Madeline Solis de Ovando. 2026. [Kelvi: A Morphological Parser to Support Tamil Literacy](https://aclanthology.org/2026.bea-1.21/). In Proceedings of the 21st Workshop on Innovative Use of NLP for Building Educational Applications (BEA 2026), pages 281–291, San Diego, California, USA. Association for Computational Linguistics.
+
+## License
+
+This repository is licensed under MIT. See the LICENSE file for more details.
