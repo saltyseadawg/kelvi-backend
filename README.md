@@ -1,6 +1,6 @@
 # Kelvi Backend
 
-The backend for Kelvi, a "smart" Tamil dictionary.
+The backend for [Kelvi](https://kelvi.ca/), a "smart" Tamil dictionary.
 See the frontend [here](https://github.com/saltyseadawg/kelvi-frontend).
 
 ## Dictionaries used
