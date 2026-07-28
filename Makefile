@@ -8,10 +8,10 @@ update-env:
 	docker pull $(IMAGE-TEST)
 
 build:
-	docker build -t $(IMAGE) Dockerfile
+	docker buildx build --platform linux/amd64,linux/arm64 -t $(IMAGE) .
 
 build-test:
-	docker build -t $(IMAGE-TEST) -f Dockerfile.dev .
+	docker buildx build --platform linux/amd64,linux/arm64 -t $(IMAGE-TEST) -f Dockerfile.dev .
 
 mount:
 	docker run --rm -v $(PWD):/code -it $(IMAGE-TEST)  /bin/bash
