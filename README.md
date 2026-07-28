@@ -39,7 +39,7 @@ If using apple, use gmake instead of make.
 
 1. Update docker images 
    ``` 
-   make update-test-env
+   make update-env
    ```
 2. Run test command
    ```
