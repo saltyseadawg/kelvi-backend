@@ -5,7 +5,12 @@ from app.models import TamilForm, InputWord
 from app.morphology import analyzer
 
 
-def process_input_word(word_data: InputWord, tamilizer, romanizer, stanza_pipeline, tamil_dicts, glosser):
+def process_input_word(
+    word_data: InputWord, tamilizer, romanizer, stanza_pipeline, tamil_dicts, glosser
+):
+    stanza_lemma = ""  # for testing
+    gramble_lemma = ""  # for testing
+    add_back_lemma = ""  # for testing
     first_word = word_data.user_input.split()[0]
     # unable to handle any hybrid Tamil + romanization words
     if re.search("[a-zA-Z]", word_data.user_input):
@@ -26,54 +31,42 @@ def process_input_word(word_data: InputWord, tamilizer, romanizer, stanza_pipeli
     tamil_dicts = tamil_dicts
     for d in tamil_dicts.values():
         defns.extend(d.search_word(lemma))
+        stanza_lemma = lemma  # for testing
+        if defns:
+            lemmatization_method = "stanza"  # for testing
     if not defns:
         # try using gramble to find suffix
-        if lemma:
-            print(lemma)
-        if not lemma:
-            print("lemma missing")
-        else:
-            lemma, suffixal_material = analyzer.analyze_word_gramble(
-                lemma, glosser
-            )
-            for d in tamil_dicts.values():
-                defns.extend(d.search_word(lemma))
-    if not defns:
-        # try add back to find lemma
-        lemma = analyzer.analyze_word_add_back(
-            lemma, suffixal_material, glosser
+
+        # lemma, suffixal_material = analyzer.analyze_word_gramble(lemma, glosser)
+        # --> this was the cause of the problem, bc "lemma" was drawing on the "lemma" stanza tried and failed to
+        # find in line 34 instead of trying again with the actual input word
+        
+        lemma, suffixal_material = analyzer.analyze_word_gramble(
+            word_data.processed_input.tamil, glosser
         )
+        gramble_lemma = lemma  # for testing
         for d in tamil_dicts.values():
             defns.extend(d.search_word(lemma))
+            if defns:
+                lemmatization_method = "gramble_basic"  # for testing
     if not defns:
-        raise HTTPException(status_code=404, detail="Word not found")
+        # try add back to find lemma
+        lemma = analyzer.analyze_word_add_back(lemma, suffixal_material, glosser)
+        add_back_lemma = lemma  # for testing
+        for d in tamil_dicts.values():
+            defns.extend(d.search_word(lemma))
+            lemmatization_method = "add_back"  # for testing
+    if not defns:
+        print(
+            "lemma: " + lemma + " not found in dictionary"
+        )  # for testing purposes, needs refactoring
+        # raise HTTPException(status_code=404, detail="Word not found")
     word_data.root_definition = defns
-    word_data.root = TamilForm(
-        tamil=lemma, romanization=romanizer.convert(lemma)
-    )
+    word_data.root = TamilForm(tamil=lemma, romanization=romanizer.convert(lemma))
     if suffixal_material:
-        suffixal_material.romanization = romanizer.convert(
-            suffixal_material.display
-        )
+        suffixal_material.romanization = romanizer.convert(suffixal_material.display)
         word_data.suffixal_material = suffixal_material
 
-    return word_data
+    lemma_data = [stanza_lemma, gramble_lemma, add_back_lemma, lemmatization_method]
 
-
-def get_results(input_file: str):
-    #input_file should be csv file of test cases with [lemma etc] in that order but are only passing the input into the function
-    #output_file = open(input_file, "a") # open file to append
-    for line in input_file:
-        print(line)
-            #test_word = line.input #the first index/element in that line should be the input
-            #word_results = e2e_testing.process_input_word(word_data=test_word, tamilizer=self.tamilizer, 
-            #romanizer=self.romanizer, stanza_pipeline=self.stanza_pipeline, tamil_dicts=self.tamil_dicts, 
-            #glosser=self.glosser)
-            #write word_results.user_input to that line
-            #write word_results.root.romanization
-            #write word_results.root.tamil
-            #write word_results.prefixal_material
-            #write word_results.suffixal_material
-    #return output_file
-
-
+    return word_data, lemma_data
